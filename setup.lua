@@ -1,7 +1,7 @@
 #!/usr/bin/env luajit
 
 -- Pseudo-main function
-function main()
+local function main()
   print("Hello")
 end
 
