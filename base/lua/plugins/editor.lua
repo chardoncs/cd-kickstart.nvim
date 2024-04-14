@@ -95,4 +95,9 @@ return {
       { '<leader>eqq', function () require("nabla").popup() end, desc = "Show math [eq]uation popup" },
     },
   },
+  -- Large file loading acceleration
+  {
+    'pteroctopus/faster.nvim',
+    opts = {},
+  },
 }
