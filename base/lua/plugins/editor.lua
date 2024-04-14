@@ -44,7 +44,7 @@ return {
 
       -- Default
       setup({
-        scan_offset = 20,
+        scan_offset = 100,
         cutoff_count = 5,
         default = {
           expandtab = true,
@@ -81,7 +81,12 @@ return {
 
       -- 2-space indent by default for certain file types
       set_2_spaces({
+        "css",
+        "html",
+        "javascript",
         "lua",
+        "sass",
+        "scss",
         "typescript",
       })
     end
