@@ -13,7 +13,7 @@ return {
       end, { desc = "[D]ebugger: set [l]og[p]oint" })
 
       vim.keymap.set("n", "<leader>dr", dap.repl.open, { desc = "[D]ebugger: open [R]EPL (read-eval-print loop) console" })
-      vim.keymap.set("n", "<leader>dl", dap.run_last, { desc = "[D]ebugger: rerun the [l]ast debug adapter" })
+      vim.keymap.set("n", "<leader>dll", dap.run_last, { desc = "[D]ebugger: rerun the [l]ast debug adapter" })
 
       vim.keymap.set({ "n", "v" }, "<leader>dh", function () require("dap.ui.widgets").hover() end, { desc = "[D]ebugger: display evaluation in floating window" })
       vim.keymap.set({ "n", "v" }, "<leader>dp", function () require("dap.ui.widgets").preview() end, { desc = "[D]ebugger: display evaluation in [p]review window" })
