@@ -1,5 +1,5 @@
---- ../../../base/lua/plugins/lsp.lua	2024-04-08 13:26:52.632240285 +0800
-+++ ./lsp[mason].lua	2024-04-18 09:46:59.920517072 +0800
+--- ./base/lua/plugins/lsp.lua	2024-04-18 23:41:24.667824115 +0800
++++ ./optional/lua/plugins/lsp[mason].lua	2024-04-18 23:41:12.761127116 +0800
 @@ -3,6 +3,8 @@
      "neovim/nvim-lspconfig",
      event = "VeryLazy",
@@ -33,32 +33,11 @@
        local cmp = require('cmp')
        cmp.setup {
          snippet = {
-@@ -51,28 +70,6 @@
+@@ -61,6 +80,7 @@
  
-       local capabilities = require('cmp_nvim_lsp').default_capabilities()
- 
--      local function default_config(t)
--        for _, name in ipairs(t) do
--          lspconfig[name].setup {
--            capabilities = capabilities,
--          }
--        end
--      end
--
--      default_config({
--        -- LSP name here for default configuration
--        --
--        -- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
--        -- for all options.
--        --
--        -- E.g.
--        --
--        -- "bashls",
--        -- "clangd",
--        -- "rust_analyzer",
--        -- "zls",
--      })
--
-       -- Lua
-       lspconfig.lua_ls.setup {
-         on_init = function(client)
+       default_config({
+         -- LSP names here for default configuration
++        -- (Only for LSPs not managed by Mason)
+         --
+         -- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+         -- for all options.

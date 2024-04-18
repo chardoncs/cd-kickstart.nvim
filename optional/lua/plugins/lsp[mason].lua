@@ -70,6 +70,29 @@ return {
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+      local function default_config(t)
+        for _, name in ipairs(t) do
+          lspconfig[name].setup {
+            capabilities = capabilities,
+          }
+        end
+      end
+
+      default_config({
+        -- LSP names here for default configuration
+        -- (Only for LSPs not managed by Mason)
+        --
+        -- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+        -- for all options.
+        --
+        -- E.g.
+        --
+        -- "bashls",
+        -- "clangd",
+        -- "rust_analyzer",
+        -- "zls",
+      })
+
       -- Lua
       lspconfig.lua_ls.setup {
         on_init = function(client)
