@@ -22,6 +22,7 @@ return {
         local widgets = require('dap.ui.widgets')
         widgets.centered_float(widgets.frames)
       end, { desc = "[D]ebugger: display [f]rames" })
+
       vim.keymap.set('n', '<Leader>ds', function()
         local widgets = require('dap.ui.widgets')
         widgets.centered_float(widgets.scopes)
