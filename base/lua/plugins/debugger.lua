@@ -32,9 +32,9 @@ return {
 
       vim.keymap.set("n", "<A-Shift-Enter>", dap.continue, { desc = "Debugger: continue until next breakpoint" })
 
-      vim.keymap.set("n", "<A-J>", dap.step_over, { desc = "Debugger: step over" })
-      vim.keymap.set("n", "<A-L>", dap.step_into, { desc = "Debugger: step into" })
-      vim.keymap.set("n", "<A-H>", dap.step_out, { desc = "Debugger: step out" })
+      vim.keymap.set("n", "<A-Ctrl-j>", dap.step_over, { desc = "Debugger: step over" })
+      vim.keymap.set("n", "<A-Ctrl-l>", dap.step_into, { desc = "Debugger: step into" })
+      vim.keymap.set("n", "<A-Ctrl-h>", dap.step_out, { desc = "Debugger: step out" })
     end,
   },
   -- Telescope integration
