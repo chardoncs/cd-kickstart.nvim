@@ -1,7 +1,15 @@
 -- Display line number
 vim.opt.number = true
 -- Relative line number
-vim.opt.relativenumber = true
+-- e.g.
+--
+--   1  def main():
+-- 1        print("Hello world!")| # <- cursor here
+--   1
+--   2
+--   3  if __name__ == "__main__":
+--   4      main()
+vim.opt.relativenumber = false
 
 -- Indentation
 vim.opt.tabstop = 4

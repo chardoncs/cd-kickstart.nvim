@@ -3,6 +3,16 @@ vim.g.mapleader = " "
 -- Local leader key
 vim.g.maplocalleader = " "
 
+-- Toggle relative line number
+vim.keymap.set(
+  {"n", "v"},
+  "<leader>rr",
+  function ()
+    vim.wo.relativenumber = not vim.wo.relativenumber
+  end,
+  { desc = "Toggle [r]elative line number for current buffer" }
+)
+
 -- Moving selected text upwards/downwards
 --
 -- Thx ThePrimagen btw :D
@@ -14,7 +24,6 @@ vim.keymap.set(
   "n", "<leader>s",
   function()
     vim.wo.spell = not vim.wo.spell
-    vim.cmd.redraw()
     print("Spell check " .. (vim.wo.spell and "on" or "off"))
   end,
   { desc = "Toggle [S]pell Check" }
