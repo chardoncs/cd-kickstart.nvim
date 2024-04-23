@@ -9,6 +9,7 @@ vim.keymap.set(
   "<leader>rr",
   function ()
     vim.wo.relativenumber = not vim.wo.relativenumber
+    print((vim.wo.relativenumber and "Relative" or "Absolute") .. " line number")
   end,
   { desc = "Toggle [r]elative line number for current buffer" }
 )
