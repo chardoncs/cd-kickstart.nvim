@@ -87,6 +87,8 @@ return {
         "html",
         "javascript",
         "lua",
+        "r",
+        "ruby",
         "sass",
         "scss",
         "typescript",
