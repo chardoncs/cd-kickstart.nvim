@@ -1,14 +1,12 @@
 return {
-  -- Themes go there
   {
-    "EdenEast/nightfox.nvim",
+    "Shatur/neovim-ayu", name = "ayu",
     --"folke/tokyonight.nvim",
-    --"catppuccin/nvim", name = "catppuccin",
+    -- "catppuccin/nvim", name = "catppuccin",
     priority = 1000,
     opts = {},
     init = function ()
-      -- Don't forget to change color scheme here.
-      vim.cmd.colorscheme("carbonfox")
+      vim.cmd.colorscheme("ayu-dark")
     end,
   },
 }
