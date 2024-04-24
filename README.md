@@ -1,6 +1,6 @@
 # Charles' Neovim Kickstarter
 
-Kickstart Neovim with options to choose.
+Kick start Neovim with options to choose.
 
 I wrote this because I need a common configuration base for different devices,
 but without too much personalization. That is, balancing personalization with generalization.
