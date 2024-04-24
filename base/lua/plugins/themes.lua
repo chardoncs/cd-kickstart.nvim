@@ -1,12 +1,13 @@
 return {
   {
-    "Shatur/neovim-ayu", name = "ayu",
-    --"folke/tokyonight.nvim",
-    -- "catppuccin/nvim", name = "catppuccin",
+    "navarasu/onedark.nvim",
     priority = 1000,
-    opts = {},
-    init = function ()
-      vim.cmd.colorscheme("ayu-dark")
+    config = function ()
+      require("onedark").setup {
+        style = "deep",
+      }
+
+      require("onedark").load()
     end,
   },
 }
