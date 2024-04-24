@@ -2,11 +2,10 @@ return {
   {
     "navarasu/onedark.nvim",
     priority = 1000,
-    config = function ()
-      require("onedark").setup {
-        style = "deep",
-      }
-
+    opts = {
+      style = "deep",
+    },
+    init = function ()
       require("onedark").load()
     end,
   },
