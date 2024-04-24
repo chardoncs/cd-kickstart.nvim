@@ -6,7 +6,7 @@ vim.g.maplocalleader = " "
 -- Toggle relative line number
 vim.keymap.set(
   {"n", "v"},
-  "<leader>rr",
+  "<leader>]",
   function ()
     vim.wo.relativenumber = not vim.wo.relativenumber
     print((vim.wo.relativenumber and "Relative" or "Absolute") .. " line number")
