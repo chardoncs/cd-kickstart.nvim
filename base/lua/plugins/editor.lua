@@ -99,7 +99,7 @@ return {
   --
   -- This plugin will shut down features like tree-sitter
   -- if the file is super large. Otherwise, Neovim will get stuck
-  -- in a long loading.
+  -- in a long loading with crazy RAM consumption.
   {
     'pteroctopus/faster.nvim',
     opts = {},
