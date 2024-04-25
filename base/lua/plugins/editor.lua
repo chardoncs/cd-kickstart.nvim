@@ -95,16 +95,11 @@ return {
       })
     end
   },
-  -- Math equation display
-  {
-    'jbyuki/nabla.nvim',
-    keys = {
-      mode = "n",
-      { '<leader>eqt', function () require("nabla").toggle_virt() end, desc = 'Toggle math [eq]uations' },
-      { '<leader>eqq', function () require("nabla").popup() end, desc = "Show math [eq]uation popup" },
-    },
-  },
   -- Large file loading acceleration
+  --
+  -- This plugin will shut down features like tree-sitter
+  -- if the file is super large. Otherwise, Neovim will get stuck
+  -- in a long loading.
   {
     'pteroctopus/faster.nvim',
     opts = {},
