@@ -9,7 +9,7 @@ vim.opt.number = true
 --   2
 --   3  if __name__ == "__main__":
 --   4      main()
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 
 -- Indentation
 vim.opt.tabstop = 4

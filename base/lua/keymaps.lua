@@ -9,9 +9,9 @@ vim.keymap.set(
   "<leader>]",
   function ()
     vim.wo.relativenumber = not vim.wo.relativenumber
-    print((vim.wo.relativenumber and "Relative" or "Absolute") .. " line number")
+    print("line number format: " .. (vim.wo.relativenumber and "relative" or "absolute"))
   end,
-  { desc = "Toggle [r]elative line number for current buffer" }
+  { desc = "toggle [r]elative line number for current buffer" }
 )
 
 -- Moving selected text upwards/downwards
