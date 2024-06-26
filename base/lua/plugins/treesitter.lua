@@ -5,7 +5,13 @@ return {
     build = function()
       require("nvim-treesitter.install").update({ with_sync = true })()
     end,
-    run = function () vim.cmd.TSUpdate() end,
+    run = function ()
+      local co = coroutine.create(function ()
+        vim.cmd.TSUpdate()
+      end)
+
+      coroutine.resume(co)
+    end,
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
