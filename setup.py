@@ -27,28 +27,10 @@ def main(args: Namespace):
 
     if target_root.exists():
         if target_root.is_dir():
-            if any(target_root.iterdir()):
-                print("Target root exists and is not empty. What to do?")
-                print("  1. Abort (default)")
-                print("  2. Backup to ${target_root}/nvim/backups/")
-                print("  3. Overwrite")
-                print("  4. Delete and overwrite")
-                print()
-
-                action = input(">> ").strip()
-
-                if action == "2":
-                    # TODO
-                    pass
-                elif action == "3":
-                    # TODO
-                    pass
-                elif action == "4":
-                    # TODO
-                    pass
-                else:
-                    print("Abort.")
-                    sys.exit(1)
+            if any(target_root.iterdir()) and not args.profile:
+                print("Target root exists and is not empty.", file=sys.stderr)
+                print("Abort.", file=sys.stderr)
+                sys.exit(1)
         else:
             print("Target root exists but is not a directory", file=sys.stderr)
             sys.exit(1)
