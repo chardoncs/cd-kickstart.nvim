@@ -9,4 +9,16 @@ Because I use different devices for different things.
 This kickstarter is not perfect. Please tell me if you have
 any suggestion.
 
-License: Apache-2.0
+## Install
+
+The most straightforward way to install it is using a setup script.
+
+Use Python edition:
+
+```bash
+```
+
+Use Ruby edition:
+
+```bash
+```
