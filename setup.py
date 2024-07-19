@@ -27,9 +27,9 @@ def main(args: Namespace):
 
     if target_root.exists():
         if target_root.is_dir():
-            if any(target_root.iterdir()) and not args.profile:
-                print("Target root exists and is not empty.", file=sys.stderr)
-                print("Abort.", file=sys.stderr)
+            if any(target_root.iterdir()) and not args.profile and not args.backup:
+                print("Target root exists and is not empty. Use `-b, --backup` to tell the installer to backup it.", file=sys.stderr)
+                print("Aborted.", file=sys.stderr)
                 sys.exit(1)
         else:
             print("Target root exists but is not a directory", file=sys.stderr)
@@ -50,9 +50,21 @@ if __name__ == '__main__':
     )
 
     parser.add_argument(
+        "-b", "--backup",
+        action="store_true",
+        help="Backup existing Neovim config if the target directory is not empty",
+    )
+
+    parser.add_argument(
         "-p", "--profile",
         type=str,
         help="Enable profile mode (installing the config as a profile. The config will be stored at `${target_root}/lua/profiles/${PROFILE}`)",
+    )
+
+    parser.add_argument(
+        "-r", "--remote",
+        action="store_true",
+        help="Download and use resources from the remote repository",
     )
 
     for mixin in OPTIONAL_MIXINS:
