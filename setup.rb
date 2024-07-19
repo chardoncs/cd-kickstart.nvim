@@ -1,9 +1,15 @@
 #!/usr/bin/env ruby
 
-def main
-  puts "Hello world"
+require 'optparse'
+
+def main opts
 end
 
-if __FILE__ == $0
-  main
+if __FILE__ == $PROGRAM_NAME
+  opts = {}
+
+  OptionParser.new do |parser|
+  end.parse!
+
+  main opts
 end
