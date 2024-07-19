@@ -27,13 +27,14 @@ def main(args: Namespace):
 
     if target_root.exists():
         if target_root.is_dir():
-            if any(target_root.iterdir()) and not args.profile and not args.backup:
-                print("Target root exists and is not empty. Use `-b, --backup` to tell the installer to backup it.", file=sys.stderr)
-                print("Aborted.", file=sys.stderr)
-                sys.exit(1)
+            if any(target_root.iterdir()):
+                if not args.profile and not args.backup:
+                    print("Target root exists and is not empty. Use `-b, --backup` to tell the installer to backup it.", file=sys.stderr)
+                    print("Aborted.", file=sys.stderr)
+                    return -1
         else:
             print("Target root exists but is not a directory", file=sys.stderr)
-            sys.exit(1)
+            return 1
 
     # TODO
 
@@ -74,4 +75,6 @@ if __name__ == '__main__':
             help=mixin[1],
         )
 
-    main(parser.parse_args())
+    syscode = main(parser.parse_args())
+    if syscode:
+        sys.exit(syscode)
