@@ -111,4 +111,42 @@ return {
     'pteroctopus/faster.nvim',
     opts = {},
   },
+  -- Trouble panel
+  {
+    "folke/trouble.nvim",
+    opts = {},
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Trouble: Toggle diagnostics",
+      },
+      {
+        "<leader>xb",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Trouble: [B]uffer diagnostics",
+      },
+     {
+        "<leader>xs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Trouble: Toggle [s]ymbols",
+      },
+      {
+        "<leader>xl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "Trouble: Toggle [L]SP tree",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Trouble: Toggle [l]ocation List",
+      },
+      {
+        "<leader>xq",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Trouble: Toggle [Q]uickfix List",
+      },
+    },
+  }
 }
