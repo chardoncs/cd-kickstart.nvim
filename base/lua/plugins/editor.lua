@@ -84,14 +84,21 @@ return {
       -- 2-space indent by default for certain file types
       set_2_spaces({
         "css",
+        "dart",
+        "elm",
+        "gleam",
         "html",
         "javascript",
+        "json",
+        "jsonc",
         "lua",
         "r",
         "ruby",
-        "sass",
-        "scss",
         "typescript",
+        "typescriptreact",
+        "sass",
+        "svelte",
+        "yaml",
       })
     end
   },
