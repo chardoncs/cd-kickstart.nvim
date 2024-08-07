@@ -13,12 +13,5 @@ any suggestion.
 
 The most straightforward way to install it is using a setup script.
 
-Use Python edition:
-
-```bash
-```
-
-Use Ruby edition:
-
 ```bash
 ```
