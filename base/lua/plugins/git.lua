@@ -2,22 +2,20 @@ return {
   -- Neogit
   {
     "NeogitOrg/neogit",
-    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-telescope/telescope.nvim",
       "sindrets/diffview.nvim",
     },
-    config = function ()
-      require("neogit").setup {}
-
-      vim.keymap.set('n', '<leader>gg', vim.cmd.Neogit, { desc = "[G]it viewer by Neo[g]it" })
-    end,
+    opts = {},
+    keys = {
+      {"<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit: Open [G]it viewer"},
+    },
   },
   -- Git conflict highlight
   {
     'akinsho/git-conflict.nvim',
-    config = true,
+    opts = {},
     event = "VeryLazy",
   },
 }
