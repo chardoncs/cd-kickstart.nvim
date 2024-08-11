@@ -11,8 +11,6 @@ import textwrap
 
 
 def main(args: Namespace):
-    root_dir = Path.cwd()
-
     if args.remote:
         root_dir = Path(tempfile.mkdtemp())
         code = subprocess.call(
@@ -23,6 +21,8 @@ def main(args: Namespace):
         if code:
             print("Git exited with errors", file=sys.stderr)
             os.exit(code)
+    else:
+        root_dir = Path.cwd()
 
     base_dir = root_dir / "base"
     optional_dir = root_dir / "optional"
