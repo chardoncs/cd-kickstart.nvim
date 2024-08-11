@@ -4,16 +4,31 @@ from argparse import ArgumentParser, Namespace
 from pathlib import Path
 import re
 import shutil
+import subprocess
 import sys
+import tempfile
 import textwrap
 
 
-BASE_DIR = Path.cwd() / "base"
-OPTIONAL_DIR = Path.cwd() / "optional"
-OPTIONAL_PLUGIN_DIR = OPTIONAL_DIR / "lua" / "plugins"
-
 
 def main(args: Namespace):
+    root_dir = Path.cwd()
+
+    if args.remote:
+        root_dir = Path(tempfile.mkdtemp())
+        code = subprocess.call(
+            ["git", "clone", "https://github.com/chardoncs/cd-kickstart.nvim.git", str(root_dir)],
+            stdout=subprocess.PIPE,
+        )
+
+        if code:
+            print("Git exited with errors", file=sys.stderr)
+            os.exit(code)
+
+    base_dir = root_dir / "base"
+    optional_dir = root_dir / "optional"
+    optional_plugin_dir = optional_dir / "lua" / "plugins"
+
     target: Path = args.dir / "lua" / "profiles" / args.profile\
             if args.profile\
             else args.dir
@@ -31,13 +46,13 @@ def main(args: Namespace):
 
     # Base config
     print("Copying base configuration...", end=" ", flush=True)
-    shutil.copytree(BASE_DIR, target, dirs_exist_ok=overwrite)
+    shutil.copytree(base_dir, target, dirs_exist_ok=overwrite)
     print("done")
 
     # Optional config
     if len(args.use) > 0:
         print("Copying optional configurations...")
-        for file in OPTIONAL_PLUGIN_DIR.iterdir():
+        for file in optional_plugin_dir.iterdir():
             file_name = file.name.split(".")[0]
             token_match = re.findall(r'\[\w+\]', file_name)
             token = token_match[0].strip("[]") if len(token_match) > 0 else file_name
@@ -84,6 +99,12 @@ if __name__ == "__main__":
         """),
         choices=["abort", "overwrite"],
         default="abort",
+    )
+
+    parser.add_argument(
+        "-R", "--remote",
+        help="Remote mode (Use upstream repository instead)",
+        action="store_true",
     )
 
     parser.add_argument(
