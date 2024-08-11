@@ -18,7 +18,7 @@ return {
             "mode",
             -- Display Neovim logo
             icon = "",
-            -- Or Vim logo for nostalgic people =)
+            -- Or Vim logo for nostalgic folks =)
             -- icon = "",
           },
         },
