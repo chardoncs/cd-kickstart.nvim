@@ -12,8 +12,8 @@ Usage:
 
 Options:
 
--d, --dir DIR                       Specify directory to install
--p, --profile PROFILE               Install config as a profile
+-d, --dir DIR                       Specify directory to install ("$XDG_CONFIG_HOME/nvim/" by default)
+-p, --profile PROFILE               Install config as a profile instead
 
 -P, --plugin-profile                Make profile a plugin profile, with other
                                     configurations remained global
@@ -36,8 +36,6 @@ Options:
 -- Pseudo main function
 local function main(args)
 
-  for _, x in ipairs(args.using) do
-  end
 end
 
 -- Entry point (argument parsing block)
