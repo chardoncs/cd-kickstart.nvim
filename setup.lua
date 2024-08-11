@@ -19,6 +19,13 @@ Options:
                                     configurations remained global
                                     -- No effect if `--profile` is not specified
 
+-r, --resolve (abort|ignore|overwrite)
+                                    What to do if the target directory is not empty
+                                    -- abort: Stop proceeding (default)
+                                    -- ignore: Keep existing files while proceed with
+                                               others
+                                    -- overwrite: Proceed anyway even files exist
+
 -u, --use PLUGIN1[,PLUGIN2,...]     Use optional plugins. Use commas to delimit
                                     multiple plugins
 
@@ -40,6 +47,7 @@ if not pcall(getfenv, 4) then
     dir = "~/.config/nvim",
     profile = nil,
     plugin_profile = false,
+    resolve = "abort",
   }
 
   -- Arg parse state
@@ -76,6 +84,16 @@ if not pcall(getfenv, 4) then
       goto continue__arg_loop
     end
 
+    -- resolve process
+    if in_state == "resolve" then
+      if a == "overwrite" or a == "ignore" then
+        args.resolve = a
+      end
+
+      in_state = nil
+      goto continue__arg_loop
+    end
+
     -- Main arg reading
     if a == "-u" or a == "--use" then
       in_state = "use"
@@ -95,6 +113,8 @@ if not pcall(getfenv, 4) then
 
       print(t)
       os.exit(0)
+    elseif a == "-r" or a == "--resolve" then
+      in_state = "resolve"
     else
       io.stderr:write(string.format("Invalid argument: %q\n", a))
       os.exit(1)
