@@ -9,9 +9,34 @@ Because I use different devices for different things.
 This kickstarter is not perfect. Please tell me if you have
 any suggestion.
 
-## Install
+## Quick start
 
-The most straightforward way to install it is using a setup script.
+The most straightforward way to install it is using the setup script.
+
+Copy and execute this command and see what's going to happen :) (You need a Python interpreter btw)
 
 ```bash
+python3 <(curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py) -R -n
 ```
+
+## Setup script
+
+### Options
+
+|    Option       |                                 Description                                   |
+|-----------------|-------------------------------------------------------------------------------|
+| -d, --dir       | Specify directory to install ("$XDG_CONFIG_HOME/nvim/" by default)            |
+| -n, --nvim      | Open neovim after the configuration                                           |
+| -p, --profile   | Install config as a profile instead                                           |
+| -r, --resolve   | What to do if the target directory is not empty: abort (default) or overwrite |
+| -R, --remote    | Remote mode (Use upstream repository instead)                                 |
+| -u, --use       | Use optional plugins. Use space to delimit multiple plugins                   |
+
+### Available optional plugins
+
+- flutter
+- mason
+- notification
+- quarto
+- templates
+- tex
