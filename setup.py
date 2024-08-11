@@ -10,7 +10,6 @@ import tempfile
 import textwrap
 
 
-
 def main(args: Namespace):
     root_dir = Path.cwd()
 
