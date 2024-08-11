@@ -67,6 +67,11 @@ def main(args: Namespace):
 
     print("All done!")
 
+    if args.nvim:
+        print("Opening neovim...", end=" ", flush=True)
+        subprocess.call(["nvim"])
+        print("done")
+
 
 if __name__ == "__main__":
     parser = ArgumentParser(
@@ -78,6 +83,12 @@ if __name__ == "__main__":
         help='Specify directory to install ("$XDG_CONFIG_HOME/nvim/" by default)',
         default=Path.home() / ".config" / "nvim",
         type=Path,
+    )
+
+    parser.add_argument(
+        "-n", "--nvim",
+        help="Open neovim after the configuration",
+        action="store_true",
     )
 
     parser.add_argument(
