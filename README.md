@@ -13,7 +13,7 @@ any suggestion.
 
 The most straightforward way to install it is using the setup script.
 
-Copy and execute this command and see what's going to happen :) (You need Python 3.10+ btw)
+Copy and execute this command and see what's going to happen :) (You need Python 3.11+ btw)
 
 ```bash
 python3 <(curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py) -R -n
