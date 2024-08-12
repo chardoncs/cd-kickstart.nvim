@@ -15,8 +15,22 @@ The most straightforward way to install it is using the setup script.
 
 Copy and execute this command and see what's going to happen :) (You need Python 3.11+ btw)
 
+### Linux (recommended)
+
 ```bash
 python3 <(curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py) -R -n
+```
+
+### MacOS
+
+```bash
+python3 <(curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py) -R -n -d ~/.config/neovim/
+```
+
+### Windows (PowerShell 7+)
+
+```bash
+curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py | python - -R -n -d ~/AppData/Local/nvim/
 ```
 
 ## Setup script
