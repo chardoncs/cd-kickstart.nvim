@@ -29,6 +29,8 @@ python3 <(curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/mai
 
 ### Windows (PowerShell 7+)
 
+> NOTE: Make sure Python is added to the `PATH`
+
 ```bash
 curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py | python - -R -n -d ~/AppData/Local/nvim/
 ```
