@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "-n", "--nvim",
-        help="Open neovim after the configuration",
+        help="Launch neovim after configuration is done",
         action="store_true",
     )
 
