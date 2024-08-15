@@ -31,7 +31,7 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 ### Options
 
 |    Option        |                                 Description                                    |
-|------------------|------------------------------------------------------------------------------- |
+|------------------|--------------------------------------------------------------------------------|
 | -d, --dir        | Specify directory to install ("$XDG_CONFIG_HOME/nvim/" by default)             |
 | -n, --nvim       | Open neovim after the configuration                                            |
 | -p, --profile    | Install config as a profile instead                                            |
