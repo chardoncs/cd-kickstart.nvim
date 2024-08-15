@@ -30,14 +30,15 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 
 ### Options
 
-|    Option       |                                 Description                                   |
-|-----------------|-------------------------------------------------------------------------------|
-| -d, --dir       | Specify directory to install ("$XDG_CONFIG_HOME/nvim/" by default)            |
-| -n, --nvim      | Open neovim after the configuration                                           |
-| -p, --profile   | Install config as a profile instead                                           |
-| -r, --resolve   | What to do if the target directory is not empty: abort (default) or overwrite |
-| -R, --remote    | Remote mode (Use upstream repository instead)                                 |
-| -u, --use       | Use optional plugins. Use space to delimit multiple plugins                   |
+|    Option        |                                 Description                                    |
+|------------------|------------------------------------------------------------------------------- |
+| -d, --dir        | Specify directory to install ("$XDG_CONFIG_HOME/nvim/" by default)             |
+| -n, --nvim       | Open neovim after the configuration                                            |
+| -p, --profile    | Install config as a profile instead                                            |
+| -a, --patch-mode | Skip base configuration and append selected optional plugins                   |
+| -r, --resolve    | What to do if the target directory is not empty: abort (default) or overwrite  |
+| -R, --remote     | Remote mode (Use upstream repository instead)                                  |
+| -u, --use        | Use optional plugins. Use space to delimit multiple plugins                    |
 
 ### Available optional plugins
 
