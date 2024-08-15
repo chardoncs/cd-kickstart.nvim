@@ -37,7 +37,7 @@ def main(args: Namespace):
             print("Target is not a directory", file=sys.stderr)
             sys.exit(1)
 
-        if any(target.iterdir()) and args.resolve == "abort":
+        if any(target.iterdir()) and args.resolve == "abort" and not args.patch_mode:
             print("Directory not empty. Stopped in cringe...", file=sys.stderr)
             sys.exit(1)
 
@@ -45,11 +45,14 @@ def main(args: Namespace):
 
     # Base config
     print("Copying base configuration...", end=" ", flush=True)
-    shutil.copytree(base_dir, target, dirs_exist_ok=overwrite)
-    print("done")
+    if not args.patch_mode:
+        shutil.copytree(base_dir, target, dirs_exist_ok=overwrite)
+        print("done")
+    else:
+        print("skipped")
 
-    # Optional config
     if len(args.use) > 0:
+        # Optional config
         print("Copying optional configurations...")
         for file in optional_plugin_dir.iterdir():
             file_name = file.name.split(".")[0]
@@ -96,6 +99,12 @@ if __name__ == "__main__":
         help="Install config as a profile instead",
         type=str,
         default=None,
+    )
+
+    parser.add_argument(
+        "-a", "--patch-mode",
+        help="Skip base configuration and append selected optional plugins",
+        action="store_true",
     )
 
     parser.add_argument(
