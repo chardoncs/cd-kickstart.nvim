@@ -2,14 +2,13 @@
 vim.opt.number = true
 -- Relative line number
 -- e.g.
--- 
---   3  package main
---   2 
---   1  func swap[T interface{}](x, y *T) {
--- 4        tmp := *x| <- cursor here
--- 	 1      *x = *y
--- 	 2      *y = tmp
---   3  }
+--
+--   1  def main():
+-- 1        print("Hello world!")| # <- cursor here
+--   1
+--   2
+--   3  if __name__ == "__main__":
+--   4      main()
 vim.opt.relativenumber = true
 
 -- Indentation
