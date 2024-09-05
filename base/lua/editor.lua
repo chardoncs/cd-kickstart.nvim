@@ -3,12 +3,21 @@ vim.opt.number = true
 -- Relative line number
 -- e.g.
 --
---   1  def main():
--- 1        print("Hello world!")| # <- cursor here
+--   6  package main
+--   5
+--   4  import "fmt"
+--   3
+--   2  func swap[T interface{}](x, y *T) {
+-- 	 1      *x, *y = *y, *x
+-- 7    }| <- your cursor here
 --   1
---   2
---   3  if __name__ == "__main__":
---   4      main()
+--   2  func main() {
+-- 	 3      a, b := 1, 2
+--   4
+-- 	 5      swap(&a, &b)
+--   6
+-- 	 7      fmt.Println(a, b)
+--   8  }
 vim.opt.relativenumber = true
 
 -- Indentation
