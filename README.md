@@ -42,9 +42,9 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 
 ### Available optional plugins
 
-- flutter
-- mason
-- notification
-- quarto
-- templates
-- tex
+- `flutter`: [Flutter](https://flutter.dev/) support, using [flutter-tools.nvim](https://github.com/nvim-flutter/flutter-tools.nvim)
+- `mason`: LSP server management, using [Mason](https://github.com/williamboman/mason.nvim)
+- `notification`: Notification toasts, using [nvim-notify](https://github.com/rcarriga/nvim-notify)
+- `quarto`: [Quarto](https://quarto.org/) support, using [official plugin](https://github.com/quarto-dev/quarto-nvim)
+- `templates`: Templates: [.gitignore](https://github.com/wintermute-cell/gitignore.nvim)
+- `tex`: TeX/LaTeX support, using [Vimtex](https://github.com/lervag/vimtex/), and Telescope BibTeX search
