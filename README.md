@@ -38,13 +38,15 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 | -p, --profile    | Install config as a profile instead                                            |
 | -R, --remote     | Remote mode (Use upstream repository instead)                                  |
 | -r, --resolve    | What to do if the target directory is not empty: abort (default) or overwrite  |
-| -u, --use        | Use optional plugins. Use space to delimit multiple plugins                    |
+| -u, --use        | Use optional features. Use space to delimit multiple items                     |
 
-### Available optional plugins
+### Optional features
 
-- `flutter`: [Flutter](https://flutter.dev/) support, using [flutter-tools.nvim](https://github.com/nvim-flutter/flutter-tools.nvim)
-- `mason`: LSP server management, using [Mason](https://github.com/williamboman/mason.nvim)
-- `notification`: Notification toasts, using [nvim-notify](https://github.com/rcarriga/nvim-notify)
-- `quarto`: [Quarto](https://quarto.org/) support, using [official plugin](https://github.com/quarto-dev/quarto-nvim)
-- `templates`: Templates: [.gitignore](https://github.com/wintermute-cell/gitignore.nvim)
-- `tex`: TeX/LaTeX support, using [Vimtex](https://github.com/lervag/vimtex/), and Telescope BibTeX search
+|     Feature      |                                 Description                                    |
+|------------------|--------------------------------------------------------------------------------|
+| `flutter`        | [Flutter](https://flutter.dev/) support, using [flutter-tools.nvim](https://github.com/nvim-flutter/flutter-tools.nvim) |
+| `mason`          | LSP server management, using [Mason](https://github.com/williamboman/mason.nvim).<br/>Otherwise, LSP servers must be managed manually in [`lua/plugins/lsp.lua`](./base/lua/plugins/lsp.lua). |
+| `notification`   | Notification toasts, using [nvim-notify](https://github.com/rcarriga/nvim-notify) |
+| `quarto`         | [Quarto](https://quarto.org/) support, using [official plugin](https://github.com/quarto-dev/quarto-nvim) |
+| `templates`      | Templates: [.gitignore](https://github.com/wintermute-cell/gitignore.nvim) |
+| `tex`            | TeX/LaTeX support, using [Vimtex](https://github.com/lervag/vimtex/), and Telescope BibTeX search |
