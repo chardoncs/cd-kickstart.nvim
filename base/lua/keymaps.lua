@@ -16,7 +16,7 @@ vim.keymap.set(
 
 -- Moving selected text upwards/downwards
 --
--- Thx ThePrimagen btw :D
+-- Thx ThePrimeagen btw :D
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move down selected text" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move up selected text" })
 
