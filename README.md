@@ -49,4 +49,4 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 | `notification`   | Notification toasts, using [nvim-notify](https://github.com/rcarriga/nvim-notify) |
 | `quarto`         | [Quarto](https://quarto.org/) support, using [official plugin](https://github.com/quarto-dev/quarto-nvim) |
 | `templates`      | Templates: [.gitignore](https://github.com/wintermute-cell/gitignore.nvim) |
-| `tex`            | TeX/LaTeX support, using [Vimtex](https://github.com/lervag/vimtex/), and Telescope BibTeX search |
+| `tex`            | TeX/LaTeX support, using [Vimtex](https://github.com/lervag/vimtex/), and [telescope-bibtex.nvim](https://github.com/nvim-telescope/telescope-bibtex.nvim) for Telescope BibTex search |
