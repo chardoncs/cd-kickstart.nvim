@@ -33,6 +33,6 @@ vim.keymap.set(
 -- LSP keymaps
 
 -- Display info popup
-vim.keymap.set('n', 'K', vim.lsp.buf.hover)
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Show information popup for hovered variable/function" })
 -- Rename current variable/function
-vim.keymap.set('n', '<leader>rm', vim.lsp.buf.rename)
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "[R]e[n]ame hovered variable/function" })
