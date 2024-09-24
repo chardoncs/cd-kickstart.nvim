@@ -20,7 +20,7 @@ def main(args: Namespace):
 
         if code:
             print("Git exited with errors", file=sys.stderr)
-            os.exit(code)
+            sys.exit(code)
     else:
         root_dir = Path.cwd()
 
