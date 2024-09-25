@@ -68,6 +68,11 @@ def main(args: Namespace):
 
         print("done")
 
+    if args.remote:
+        print(f"Clean up temporary directory: `{root_dir}`...", end=" ", flush=True)
+        shutil.rmtree(root_dir)
+        print("done")
+
     print("All done!")
 
     if args.nvim:
