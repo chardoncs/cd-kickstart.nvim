@@ -2,6 +2,8 @@
 
 from argparse import ArgumentParser, Namespace
 from pathlib import Path
+
+import platform
 import re
 import shutil
 import subprocess
@@ -89,7 +91,10 @@ if __name__ == "__main__":
     parser.add_argument(
         "-d", "--dir",
         help='Specify directory to install ("$XDG_CONFIG_HOME/nvim/" by default)',
-        default=Path.home() / ".config" / "nvim",
+        default={
+            "Darwin": Path.home() / ".config" / "neovim",
+            "Windows": Path.home() / "AppData" / "Local" / "nvim",
+        }.get(platform.system(), Path.home() / ".config" / "nvim"),
         type=Path,
     )
 
