@@ -3,6 +3,7 @@
 from argparse import ArgumentParser, Namespace
 from pathlib import Path
 
+import atexit
 import platform
 import re
 import shutil
@@ -10,6 +11,12 @@ import subprocess
 import sys
 import tempfile
 import textwrap
+
+
+def clean_tmp_dir(root_dir):
+    print(f"Clean up temporary directory: `{root_dir}`...", end=" ", flush=True)
+    shutil.rmtree(root_dir)
+    print("done")
 
 
 def main(args: Namespace):
@@ -20,8 +27,11 @@ def main(args: Namespace):
             stdout=subprocess.PIPE,
         )
 
+        # Clean up temporary directory on exit
+        atexit.register(clean_tmp_dir, root_dir)
+
         if code:
-            print("Git exited with errors", file=sys.stderr)
+            print("Error: Git exited with errors", file=sys.stderr)
             sys.exit(code)
     else:
         root_dir = Path.cwd()
@@ -40,7 +50,7 @@ def main(args: Namespace):
             sys.exit(1)
 
         if any(target.iterdir()) and args.resolve == "abort" and not args.patch_mode:
-            print("Directory not empty. Stopped in cringe...", file=sys.stderr)
+            print("Error: Directory not empty. Stopped in cringe...", file=sys.stderr)
             sys.exit(1)
 
     overwrite = args.resolve == "overwrite"
@@ -68,11 +78,6 @@ def main(args: Namespace):
                 shutil.copy(file, target / "lua" / "plugins" / f"{file_name}.lua")
                 print("done")
 
-        print("done")
-
-    if args.remote:
-        print(f"Clean up temporary directory: `{root_dir}`...", end=" ", flush=True)
-        shutil.rmtree(root_dir)
         print("done")
 
     print("All done!")
