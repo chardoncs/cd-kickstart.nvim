@@ -6,24 +6,8 @@ Kick start your Neovim with options to choose.
 
 Copy and execute this command and see what's going to happen :) (You need Python 3.11+ btw)
 
-### Linux (recommended)
-
 ```bash
-python3 <(curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py) -R -n
-```
-
-### MacOS
-
-```bash
-python3 <(curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py) -R -n -d ~/.config/neovim/
-```
-
-### Windows (PowerShell 7+)
-
-> NOTE: Make sure Python is added to the `PATH`
-
-```bash
-curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py | python - -R -n -d ~/AppData/Local/nvim/
+curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py | python3 - -R -n
 ```
 
 ## Setup script
