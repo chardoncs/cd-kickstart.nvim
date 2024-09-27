@@ -22,13 +22,13 @@ def clean_tmp_dir(root_dir):
 def main(args: Namespace):
     if args.remote:
         root_dir = Path(tempfile.mkdtemp())
+        # Clean up temporary directory on exit
+        atexit.register(clean_tmp_dir, root_dir)
+
         code = subprocess.call(
             ["git", "clone", "https://github.com/chardoncs/cd-kickstart.nvim.git", str(root_dir)],
             stdout=subprocess.PIPE,
         )
-
-        # Clean up temporary directory on exit
-        atexit.register(clean_tmp_dir, root_dir)
 
         if code:
             print("Error: Git exited with errors", file=sys.stderr)
