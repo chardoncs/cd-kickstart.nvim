@@ -8,25 +8,21 @@ return {
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
-          "bash",
-          "c",
-          "cpp",
-          "go",
-          "javascript",
-          "julia",
+          -- Add configs that should always get installed.
+          -- Otherwise, the plugin will not install them until
+          -- Neovim encounters corresponding file types.
+          --
+          -- E.g.
           "lua",
-          "python",
-          "rust",
-          "typescript",
-          "vim",
-          "vimdoc",
-          "query",
-          "jsonc",
+          -- "python",
+          -- "rust",
+          -- "jsonc",
         },
-
         sync_install = false,
         auto_install = true,
-        ignore_install = {},
+        ignore_install = {
+          -- Ignored file types here
+        },
         highlight = {
           enable = true,
           disable = {},
