@@ -12,6 +12,9 @@ return {
           -- Otherwise, the plugin will not install them until
           -- Neovim encounters corresponding file types.
           --
+          -- Check supported languages at:
+          -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
+          --
           -- E.g.
           "lua",
           -- "python",
