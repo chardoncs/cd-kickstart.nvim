@@ -29,7 +29,7 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 |     Feature      |                                 Description                                    |
 |------------------|--------------------------------------------------------------------------------|
 | `flutter`        | [Flutter](https://flutter.dev/) support, using [flutter-tools.nvim](https://github.com/nvim-flutter/flutter-tools.nvim) |
-| `mason`          | LSP server management, using [Mason](https://github.com/williamboman/mason.nvim).<br/>Otherwise, LSP servers must be managed manually or using the system package manager, and configured manually in [`lua/plugins/lsp.lua`](./base/lua/plugins/lsp.lua). |
+| `mason`          | LSP server management, using [mason.nvim](https://github.com/williamboman/mason.nvim).<br/>Otherwise, LSP servers must be managed manually or using the system package manager, and configured manually in [`lua/plugins/lsp.lua`](./base/lua/plugins/lsp.lua). |
 | `notification`   | Notification toasts, using [nvim-notify](https://github.com/rcarriga/nvim-notify) |
 | `quarto`         | [Quarto](https://quarto.org/) support, using [official plugin](https://github.com/quarto-dev/quarto-nvim) |
 | `startup`        | Startup window, using [startup.nvim](https://github.com/max397574/startup.nvim), which will replace the default vim/neovim one.<br />Moved to optional from baseline since Oct. 1, 2024. |
