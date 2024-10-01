@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "-d", "--dir",
-        help='Specify directory to install ("$XDG_CONFIG_HOME/nvim/" by default)',
+        help='Specify directory to install',
         default={
             "Darwin": Path.home() / ".config" / "neovim",
             "Windows": Path.home() / "AppData" / "Local" / "nvim",
@@ -143,7 +143,7 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "-u", "--use",
-        help="Use optional plugins. Use space to delimit multiple plugins",
+        help="Use optional features. Use space to delimit multiple features",
         action="extend",
         nargs="+",
         type=str,
