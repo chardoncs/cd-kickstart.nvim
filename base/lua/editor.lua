@@ -1,5 +1,6 @@
 -- Display line number
 vim.opt.number = true
+
 -- Relative line number
 -- e.g.
 --
@@ -19,6 +20,23 @@ vim.opt.number = true
 -- 	 7      fmt.Println(a, b)
 --   8  }
 vim.opt.relativenumber = true
+
+-- Smart relative line number
+--
+-- Using absolute line in insert mode, otherwise using relative.
+local smart_relative_line = true
+
+if smart_relative_line then
+  vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+    desc = "Disable relative line numbers in insert mode",
+    callback = function () vim.opt.relativenumber = false end,
+  })
+
+  vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+    desc = "Enable relative line number outside insert mode",
+    callback = function () vim.opt.relativenumber = true end,
+  })
+end
 
 -- Indentation
 vim.opt.tabstop = 4
