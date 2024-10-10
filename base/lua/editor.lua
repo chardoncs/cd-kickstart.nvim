@@ -24,7 +24,7 @@ vim.opt.relativenumber = true
 -- Smart relative line number
 --
 -- Using absolute line in insert mode, otherwise using relative.
-local smart_relative_line = true
+local smart_relative_line = false
 
 if smart_relative_line then
   vim.api.nvim_create_autocmd({ "InsertEnter" }, {
