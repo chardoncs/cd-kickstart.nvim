@@ -29,12 +29,20 @@ local smart_relative_line = false
 if smart_relative_line then
   vim.api.nvim_create_autocmd({ "InsertEnter" }, {
     desc = "Disable relative line numbers in insert mode",
-    callback = function () vim.opt.relativenumber = false end,
+    callback = function ()
+      if vim.wo.number then
+        vim.opt_local.relativenumber = false
+      end
+    end,
   })
 
   vim.api.nvim_create_autocmd({ "InsertLeave" }, {
     desc = "Enable relative line number outside insert mode",
-    callback = function () vim.opt.relativenumber = true end,
+    callback = function ()
+      if vim.wo.number then
+        vim.opt_local.relativenumber = true
+      end
+    end,
   })
 end
 
