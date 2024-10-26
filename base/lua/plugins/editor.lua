@@ -72,7 +72,11 @@ return {
       vim.keymap.set('n', '<leader>bl', vim.cmd.BufferOrderByLanguage, { desc = "[B]uffer order by [L]anguage" })
       vim.keymap.set('n', '<leader>bw', vim.cmd.BufferOrderByWindowNumber, { desc = "[B]uffer order by [W]indow number" })
     end,
-    opts = {},
+    opts = {
+      icons = {
+        buffer_index = true,
+      },
+    },
   },
   -- Indentation guessing
   {
