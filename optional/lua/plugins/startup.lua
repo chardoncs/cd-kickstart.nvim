@@ -1,11 +1,10 @@
 return {
-  -- Startup screen
   {
-    "startup-nvim/startup.nvim",
-    config = function ()
-      require("startup").setup()
-    end,
+    'nvimdev/dashboard-nvim',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
+    event = 'VimEnter',
+    opts = {},
   },
-  -- Startup time statistics
-  { "dstein64/vim-startuptime" },
 }
