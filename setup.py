@@ -2,6 +2,9 @@
 
 from argparse import ArgumentParser, Namespace
 from pathlib import Path
+
+import atexit
+import platform
 import re
 import shutil
 import subprocess
@@ -10,16 +13,25 @@ import tempfile
 import textwrap
 
 
+def clean_tmp_dir(root_dir):
+    print(f"Clean up temporary directory: `{root_dir}`...", end=" ", flush=True)
+    shutil.rmtree(root_dir)
+    print("done")
+
+
 def main(args: Namespace):
     if args.remote:
         root_dir = Path(tempfile.mkdtemp())
+        # Clean up temporary directory on exit
+        atexit.register(clean_tmp_dir, root_dir)
+
         code = subprocess.call(
             ["git", "clone", "https://github.com/chardoncs/cd-kickstart.nvim.git", str(root_dir)],
             stdout=subprocess.PIPE,
         )
 
         if code:
-            print("Git exited with errors", file=sys.stderr)
+            print("Error: Git exited with errors", file=sys.stderr)
             sys.exit(code)
     else:
         root_dir = Path.cwd()
@@ -38,7 +50,7 @@ def main(args: Namespace):
             sys.exit(1)
 
         if any(target.iterdir()) and args.resolve == "abort" and not args.patch_mode:
-            print("Directory not empty. Stopped in cringe...", file=sys.stderr)
+            print("Error: Directory not empty. Stopped in cringe...", file=sys.stderr)
             sys.exit(1)
 
     overwrite = args.resolve == "overwrite"
@@ -68,11 +80,6 @@ def main(args: Namespace):
 
         print("done")
 
-    if args.remote:
-        print(f"Clean up temporary directory: `{root_dir}`...", end=" ", flush=True)
-        shutil.rmtree(root_dir)
-        print("done")
-
     print("All done!")
 
     if args.nvim:
@@ -88,8 +95,11 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "-d", "--dir",
-        help='Specify directory to install ("$XDG_CONFIG_HOME/nvim/" by default)',
-        default=Path.home() / ".config" / "nvim",
+        help='Specify directory to install',
+        default={
+            "Darwin": Path.home() / ".config" / "neovim",
+            "Windows": Path.home() / "AppData" / "Local" / "nvim",
+        }.get(platform.system(), Path.home() / ".config" / "nvim"),
         type=Path,
     )
 
@@ -133,7 +143,7 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "-u", "--use",
-        help="Use optional plugins. Use space to delimit multiple plugins",
+        help="Use optional features. Use space to delimit multiple features",
         action="extend",
         nargs="+",
         type=str,
