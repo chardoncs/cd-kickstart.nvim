@@ -82,6 +82,7 @@ vim.opt.scrolloff = 8
 -- e.g.
 --
 -- `-- INSERT --` while Neovim is in insert mode.
---
--- > Lualine shows mode also, so no need of double display.
-vim.opt.showmode = false
+vim.opt.showmode = true
+
+-- Column limit
+vim.opt.colorcolumn = "140"
