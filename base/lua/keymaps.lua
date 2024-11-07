@@ -14,12 +14,6 @@ vim.keymap.set(
   { desc = "Toggle local relative line number" }
 )
 
--- Moving selected text upwards/downwards
---
--- Thx ThePrimeagen btw :D
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move down selected text" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move up selected text" })
-
 -- Spell check toggle
 vim.keymap.set(
   "n", "<leader>s",
