@@ -1,9 +1,10 @@
 return {
   {
-    'nvim-telescope/telescope.nvim', branch = '0.1.x',
-    event = "VeryLazy",
+    'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    config = function ()
+    opts = {},
+    init = function ()
       local builtin = require('telescope.builtin')
 
       vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Telescope: [F]ind [F]iles" })
@@ -19,9 +20,11 @@ return {
   },
   {
     "nvim-telescope/telescope-file-browser.nvim",
-    event = "VeryLazy",
     dependencies = { "nvim-telescope/telescope.nvim" },
     config = function ()
+      require("telescope").load_extension "file_browser"
+    end,
+    init = function ()
       vim.keymap.set('n', '<leader>fb', function() vim.cmd.Telescope("file_browser") end, { desc = "Telescope: [F]ile [B]rowser" })
     end,
   },
