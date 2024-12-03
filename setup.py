@@ -13,6 +13,10 @@ import tempfile
 import textwrap
 
 
+TIER_DIR = "tiers"
+OPTIONAL_DIR = "+optional"
+
+
 def clean_tmp_dir(root_dir):
     print(f"Clean up temporary directory: `{root_dir}`...", end=" ", flush=True)
     shutil.rmtree(root_dir)
@@ -36,6 +40,7 @@ def main(args: Namespace):
     else:
         root_dir = Path.cwd()
 
+    # TODO: Break people!
     base_dir = root_dir / "base"
     optional_dir = root_dir / "optional"
     optional_plugin_dir = optional_dir / "lua" / "plugins"
