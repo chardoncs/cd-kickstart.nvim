@@ -13,7 +13,6 @@ import tempfile
 import textwrap
 
 
-TIER_DIR = "tiers"
 OPTIONAL_DIR = "+optional"
 
 
