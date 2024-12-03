@@ -90,7 +90,7 @@ def main(args: Namespace):
 
 if __name__ == "__main__":
     parser = ArgumentParser(
-        description="cd-kickstart setup tool",
+        description="cd-kickstart setup script (Python edition)",
     )
 
     parser.add_argument(
