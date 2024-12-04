@@ -81,6 +81,7 @@ return {
   -- Indentation guessing
   {
     "hrsh7th/nvim-dansa",
+    branch = "main",
     event = "VeryLazy",
     config = function ()
       local setup = require("dansa").setup
