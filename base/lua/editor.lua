@@ -85,4 +85,4 @@ vim.opt.scrolloff = 8
 vim.opt.showmode = true
 
 -- Column limit
-vim.opt.colorcolumn = "140"
+vim.opt.colorcolumn = "120"
