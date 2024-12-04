@@ -1,17 +1,26 @@
 return {
-  -- Neogit
+  -- LazyGit in neovim
   {
-    "NeogitOrg/neogit",
-    cmd = "Neogit",
+    "kdheepak/lazygit.nvim",
+    lazy = true,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim",
-      "sindrets/diffview.nvim",
     },
-    opts = {},
     keys = {
-      {"<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit: Open [G]it viewer"},
-    },
+      {
+        "<leader>gg",
+        function () vim.cmd[[LazyGit]] end,
+        desc = "Lazy[G]it.nvim: Launch LazyGit in a Neovim window (requiring LazyGit installed on your computer)"
+      },
+    }
   },
   -- Git conflict highlight
   {
