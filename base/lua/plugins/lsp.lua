@@ -62,8 +62,7 @@ return {
       default_config({
         -- LSP names here for default configuration
         --
-        -- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-        -- for all options.
+        -- Check `:help lspconfig-all` for all options.
         --
         -- E.g.
         --
