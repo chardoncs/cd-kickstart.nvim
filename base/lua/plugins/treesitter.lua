@@ -4,9 +4,7 @@ return {
   -- NOTE: requies a C compiler (GCC or Clang) and libstdc++ for compiling patterns
   {
     "nvim-treesitter/nvim-treesitter",
-    build = function()
-      require("nvim-treesitter.install").update({ with_sync = false })()
-    end,
+    build = ":TSUpdate",
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
