@@ -1,5 +1,7 @@
 return {
-  -- Treesitter for syntax tree based highlight
+  -- Treesitter pattens
+  --
+  -- NOTE: requies a C compiler (GCC or Clang) and libstdc++ for compiling patterns
   {
     "nvim-treesitter/nvim-treesitter",
     build = function()
@@ -16,13 +18,14 @@ return {
           -- https://github.com/nvim-treesitter/nvim-treesitter?tab=readme-ov-file#supported-languages
           --
           -- E.g.
-          "lua",
+          -- "lua",
           -- "python",
           -- "rust",
           -- "jsonc",
         },
         sync_install = false,
-        auto_install = true,
+        -- Use with `ensure_installed`
+        auto_install = false,
         ignore_install = {
           -- Ignored file types here
         },
@@ -35,11 +38,8 @@ return {
     end,
   },
   -- Display current scope at the top
-  --
-  -- Disable it if you don't like it.
   {
     "nvim-treesitter/nvim-treesitter-context",
-    -- enabled = false,
     opts = {},
   },
 }
