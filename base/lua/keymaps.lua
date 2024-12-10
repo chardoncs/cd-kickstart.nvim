@@ -27,6 +27,8 @@ vim.keymap.set(
 -- LSP keymaps
 
 -- Display info popup
-vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Show information popup for hovered variable/function" })
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "vim.lsp: Show information popup for hovered variable/function" })
 -- Rename current variable/function
-vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "[R]e[n]ame hovered variable/function" })
+vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "vim.lsp: [R]e[n]ame hovered variable/function" })
+-- Format buffer
+vim.keymap.set("n", "F", vim.lsp.buf.format, { desc = "vim.lsp: [F]ormat buffer" })
