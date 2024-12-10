@@ -21,9 +21,9 @@ return {
           -- "rust",
           -- "jsonc",
         },
-        sync_install = false,
         -- Use with `ensure_installed`
-        auto_install = false,
+        sync_install = false,
+        auto_install = true,
         ignore_install = {
           -- Ignored file types here
         },
