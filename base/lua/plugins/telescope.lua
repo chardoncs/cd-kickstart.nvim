@@ -8,8 +8,8 @@ return {
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         -- Requies a C compiler (GCC or Clang)
-        -- ... and CMake
-        build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release',
+        -- ... and CMake (and personally prefer Ninja ;))
+        build = 'cmake -S. -Bbuild -GNinja -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release',
         -- ... or gmake
         --build = "make",
       },
