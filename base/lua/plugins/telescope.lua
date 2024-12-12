@@ -23,9 +23,14 @@ return {
         preview = {
           filesize_limit = 0.1,
         },
+        extensions = {
+          fzf = {},
+        },
       },
     },
     init = function ()
+      require("telescope").load_extension("fzf")
+
       local builtin = require('telescope.builtin')
 
       vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Telescope: [F]ind [F]iles in working directory" })
