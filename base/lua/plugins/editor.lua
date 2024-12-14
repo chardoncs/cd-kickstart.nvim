@@ -9,7 +9,7 @@ return {
   {
     "nvim-lualine/lualine.nvim",
     dependencies = {
-      'nvim-tree/nvim-web-devicons'
+      'nvim-tree/nvim-web-devicons',
     },
     opts = {
       options = {
@@ -31,55 +31,38 @@ return {
   },
   -- Tab bar
   {
-    'romgrk/barbar.nvim',
+    'nanozuki/tabby.nvim',
     dependencies = {
-      'lewis6991/gitsigns.nvim',
       'nvim-tree/nvim-web-devicons',
     },
-    init = function ()
-      vim.g.barbar_auto_setup = false
-
-      -- Move to previous/next buffer
-      vim.keymap.set('n', '<A-h>', vim.cmd.BufferPrevious, { desc = "Previous buffer" })
-      vim.keymap.set('n', '<A-l>', vim.cmd.BufferNext, { desc = "Next buffer" })
-      -- Reorder buffer to previous/next
-      vim.keymap.set('n', '<A-H>', vim.cmd.BufferMovePrevious, { desc = "Move current buffer forward" })
-      vim.keymap.set('n', '<A-L>', vim.cmd.BufferMoveNext, { desc = "Move current buffer backward" })
-
-      -- Goto buffer in position...
-      for i = 1, 10 do
-        vim.keymap.set(
-          'n',
-          string.format("<A-%d>", i % 10),
-          function() vim.cmd.BufferGoto(i) end,
-          { desc = string.format("Go to the #%d buffer", i), }
-        )
-      end
-      vim.keymap.set('n', '<A-->', vim.cmd.BufferLast, { desc = "Go to the last buffer" })
-      -- Pin/unpin buffer
-      vim.keymap.set('n', '<A-p>', vim.cmd.BufferPin, { desc = "[P]in buffer" })
-      -- Close buffer
-      vim.keymap.set('n', '<A-x>', vim.cmd.BufferClose, { desc = "Close buffer" })
-      -- Wipeout buffer
-      --                 :BufferWipeout
-      -- Close commands
-      --                 :BufferCloseAllButCurrent
-      --                 :BufferCloseAllButPinned
-      --                 :BufferCloseAllButCurrentOrPinned
-      --                 :BufferCloseBuffersLeft
-      --                 :BufferCloseBuffersRight
-      -- Magic buffer-picking mode
-      vim.keymap.set('n', '<C-p>', vim.cmd.BufferPick)
-      -- Sort automatically by...
-      vim.keymap.set('n', '<leader>bb', vim.cmd.BufferOrderByBufferNumber, { desc = "[B]uffer order by [B]uffer number" })
-      vim.keymap.set('n', '<leader>bd', vim.cmd.BufferOrderByDirectory, { desc = "[B]uffer order by [D]irectory" })
-      vim.keymap.set('n', '<leader>bl', vim.cmd.BufferOrderByLanguage, { desc = "[B]uffer order by [L]anguage" })
-      vim.keymap.set('n', '<leader>bw', vim.cmd.BufferOrderByWindowNumber, { desc = "[B]uffer order by [W]indow number" })
-    end,
     opts = {
-      icons = {
-        buffer_index = true,
-      },
+      line = function (line)
+        return {
+          line.tabs().foreach(function(tab)
+            local hl = tab.is_current() and "TabLineSel" or "TabLine"
+
+            return {
+              line.sep("", hl, "TabLineFill"),
+              tab.number(),
+              tab.name(),
+              tab.close_btn(''),
+              line.sep("", hl, "TabLineFill"),
+              hl = hl,
+              margin = " ",
+            }
+          end),
+          line.spacer(),
+          line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
+            return {
+              " ",
+              win.buf_name(),
+              " ",
+              hl = "TabLine",
+            }
+          end),
+          hl = "TabLineFill",
+        }
+      end,
     },
   },
   -- Indentation guessing
@@ -90,7 +73,6 @@ return {
     config = function ()
       local setup = require("dansa").setup
 
-      -- Default
       setup({
         scan_offset = 100,
         cutoff_count = 5,
@@ -138,6 +120,7 @@ return {
         "json",
         "jsonc",
         "lua",
+        "ocaml",
         "r",
         "ruby",
         "typescript",
