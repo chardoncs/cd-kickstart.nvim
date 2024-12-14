@@ -35,7 +35,7 @@ return {
 
       vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = "Telescope: [F]ind [F]iles in working directory" })
       vim.keymap.set('n', '<leader>lg', builtin.live_grep, { desc = "Telescope: [L]ive [G]rep" })
-      vim.keymap.set('n', '<leader>fu', builtin.buffers, { desc = "Telescope: [F]ind B[u]ffers" })
+      vim.keymap.set('n', '<leader>f`', builtin.buffers, { desc = "Telescope: [F]ind Buffers" })
       vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = "Telescope: [F]ind [H]elp" })
       vim.keymap.set('n', '<leader>fg', builtin.git_files, { desc = "Telescope: [F]ind [G]it Files" })
       vim.keymap.set('n', '<leader>km', builtin.keymaps, { desc = "Telescope: Search [K]ey[m]aps" })
