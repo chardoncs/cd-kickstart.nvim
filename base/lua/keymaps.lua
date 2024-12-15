@@ -35,7 +35,7 @@ vim.keymap.set("n", "F", vim.lsp.buf.format, { desc = "vim.lsp: [F]ormat buffer"
 
 -- Tabpage and buffer control
 
-vim.keymap.set("n", "<M-n>", vim.cmd.tabnew, { desc = "Tabpage: Create a [n]ew tabpage, shorthand of `:tabnew`" })
+vim.keymap.set("n", "<M-t>", vim.cmd.tabnew, { desc = "Tabpage: Create a new [t]abpage, shorthand of `:tabnew`" })
 
 local ordinal_suffixes = { "st", "nd", "rd" }
 
