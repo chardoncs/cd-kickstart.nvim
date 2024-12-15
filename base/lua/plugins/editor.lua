@@ -26,14 +26,27 @@ return {
             -- icon = "",
           },
         },
+        lualine_x = {
+          "encoding",
+          {
+            "fileformat",
+            icons_enabled = true,
+            symbols = {
+              unix = "LF",
+              dos = "CRLF",
+              mac = "CR",
+            },
+          },
+          "filetype",
+        },
       },
     },
   },
   -- Tab bar
   {
-    'nanozuki/tabby.nvim',
+    "nanozuki/tabby.nvim",
     dependencies = {
-      'nvim-tree/nvim-web-devicons',
+      "nvim-tree/nvim-web-devicons",
     },
     opts = {
       line = function (line)
