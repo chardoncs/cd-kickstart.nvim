@@ -24,6 +24,8 @@ vim.keymap.set(
   { desc = "Toggle [S]pell Check" }
 )
 
+vim.keymap.set("n", "<leader>tt", vim.cmd.tabnew, { desc = "Tabpage: Create a new [t]abpage, shorthand of `:tabnew`" })
+
 -- LSP keymaps
 
 -- Display info popup
