@@ -35,6 +35,23 @@ vim.keymap.set("n", "F", vim.lsp.buf.format, { desc = "vim.lsp: [F]ormat buffer"
 
 -- Tabpage and buffer control
 
-vim.keymap.set("n", "<leader>tt", vim.cmd.tabnew, { desc = "Tabpage: Create a new [t]abpage, shorthand of `:tabnew`" })
+vim.keymap.set("n", "<M-t>", vim.cmd.tabnew, { desc = "Tabpage: Create a new [t]abpage, shorthand of `:tabnew`" })
 
-vim.keymap.set("n", "<C-x>", vim.cmd.bdelete, { desc = "Buffer: remove current buffer, shorthand of `:bdelete`" })
+vim.keymap.set("n", "<M-x>", vim.cmd.bdelete, { desc = "Buffer: Remove current buffer, shorthand of `:bdelete`" })
+
+local ordinal_suffixes = { "st", "nd", "rd" }
+
+for i = 1, 10 do
+  vim.keymap.set(
+    "n",
+    string.format("<M-%d>", i % 10),
+    function ()
+      if not vim.api.nvim_tabpage_is_valid(i) then
+        vim.print(string.format("Tabpage %d is not valid", i))
+        return
+      end
+      vim.cmd.tabn(i)
+    end,
+    { desc = string.format("Tabpage: Go to the %d%s tabpage", i, ordinal_suffixes[i % 10] or "th", i) }
+  )
+end
