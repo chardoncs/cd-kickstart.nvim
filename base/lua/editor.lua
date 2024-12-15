@@ -27,7 +27,10 @@ vim.opt.relativenumber = true
 local smart_relative_line = false
 
 if smart_relative_line then
+  local group = vim.api.nvim_create_augroup("smart-relative-line", {})
+
   vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+    group = group,
     desc = "Disable relative line numbers in insert mode",
     callback = function ()
       if vim.wo.number then
@@ -37,6 +40,7 @@ if smart_relative_line then
   })
 
   vim.api.nvim_create_autocmd({ "InsertLeave" }, {
+    group = group,
     desc = "Enable relative line number outside insert mode",
     callback = function ()
       if vim.wo.number then
@@ -86,3 +90,12 @@ vim.opt.showmode = true
 
 -- Column limit
 vim.opt.colorcolumn = "120"
+
+vim.api.nvim_create_autocmd("TermOpen", {
+  group = vim.api.nvim_create_augroup("term-init", {}),
+  desc = "Initialize terminal window",
+  callback = function ()
+    vim.opt_local.relativenumber = false
+    vim.opt_local.number = false
+  end
+})
