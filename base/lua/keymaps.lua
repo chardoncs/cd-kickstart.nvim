@@ -37,8 +37,6 @@ vim.keymap.set("n", "F", vim.lsp.buf.format, { desc = "vim.lsp: [F]ormat buffer"
 
 vim.keymap.set("n", "<M-t>", vim.cmd.tabnew, { desc = "Tabpage: Create a new [t]abpage, shorthand of `:tabnew`" })
 
-vim.keymap.set("n", "<M-x>", vim.cmd.bdelete, { desc = "Buffer: Remove current buffer, shorthand of `:bdelete`" })
-
 local ordinal_suffixes = { "st", "nd", "rd" }
 
 for i = 1, 10 do
@@ -55,3 +53,6 @@ for i = 1, 10 do
     { desc = string.format("Tabpage: Go to the %d%s tabpage", i, ordinal_suffixes[i % 10] or "th", i) }
   )
 end
+
+vim.keymap.set("n", "<M-k>", vim.cmd.tabprevious, { desc = "Tabpage: Go to the previous tabpage, shorthand of `:tabprevious`" })
+vim.keymap.set("n", "<M-j>", vim.cmd.tabnext, { desc = "Tabpage: Go to the next tabpage, shorthand of `:tabnext`" })
