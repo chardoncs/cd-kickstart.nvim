@@ -17,7 +17,7 @@ return {
           if pcall(function () harpoon:list():add() end) then
             vim.print("Buffer added to Harpoon list")
           else
-            vim.print("Error: Failed to add buffer")
+            vim.api.nvim_err_writeln("Error: Failed to add buffer")
           end
         end,
         { desc = "[H]arpoon: Add current buffer to Harpoon list" }
