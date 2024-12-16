@@ -20,7 +20,30 @@ return {
             vim.api.nvim_err_writeln("Error: Failed to add buffer")
           end
         end,
-        { desc = "[H]arpoon: Add current buffer to Harpoon list" }
+        { desc = "[H]arpoon: Add current buffer to the Harpoon list" }
+      )
+
+      vim.keymap.set(
+        "n",
+        "<leader>hd",
+        function()
+          if pcall(function () harpoon:list():remove() end) then
+            vim.print("Buffer removed from Harpoon list")
+          else
+            vim.api.nvim_err_writeln("Error: Failed to remove buffer")
+          end
+        end,
+        { desc = "[H]arpoon: [D]elete current buffer from the Harpoon list" }
+      )
+
+      vim.keymap.set(
+        "n",
+        "<leader>hc",
+        function()
+          harpoon:list():clear()
+          vim.print("Harpoon list cleared")
+        end,
+        { desc = "[H]arpoon: [C]lear Harpoon list" }
       )
 
       local ordinal_suffixes = { "st", "nd", "rd" }
