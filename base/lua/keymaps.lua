@@ -45,7 +45,7 @@ for i = 1, 10 do
     string.format("<M-%d>", i % 10),
     function ()
       if not pcall(vim.cmd.tabn, i) then
-        vim.print(string.format("Tabpage %d does not exist", i))
+        vim.api.nvim_err_writeln(string.format("Tabpage %d does not exist", i))
       end
     end,
     { desc = string.format("Tabpage: Go to the %d%s tabpage", i, ordinal_suffixes[i % 10] or "th") }
