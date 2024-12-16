@@ -70,7 +70,6 @@ return {
         -- "clangd",
         -- "rust_analyzer",
         -- "zls",
-        -- vim.fn.findfile("deno.json", vim.fn.getcwd()) and "denols" or "ts_ls",
       })
 
       -- Lua
