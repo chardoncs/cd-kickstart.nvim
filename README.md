@@ -18,7 +18,7 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 
 |    Option        |                                 Description                                    |
 |------------------|--------------------------------------------------------------------------------|
-| -a, --patch-mode | Skip base configuration and append selected optional features                  |
+| -a, --append, --patch-mode | Skip base configuration and append selected optional features                  |
 | -d, --dir        | Specify directory to install<br />By default: `~/.config/nvim/` (Linux), `~/.config/neovim` (MacOS), `~\AppData\Local\nvim` (Windows) |
 | -n, --nvim       | Open neovim after the configuration completed                                  |
 | -p, --profile    | Install config as a profile instead                                            |
