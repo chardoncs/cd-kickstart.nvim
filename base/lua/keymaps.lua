@@ -48,7 +48,7 @@ for i = 1, 10 do
         vim.print(string.format("Tabpage %d does not exist", i))
       end
     end,
-    { desc = string.format("Tabpage: Go to the %d%s tabpage", i, ordinal_suffixes[i % 10] or "th", i) }
+    { desc = string.format("Tabpage: Go to the %d%s tabpage", i, ordinal_suffixes[i % 10] or "th") }
   )
 end
 
