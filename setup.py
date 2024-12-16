@@ -117,7 +117,7 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "-a", "--patch-mode",
+        "-a", "--append", "--patch-mode",
         help="Skip base configuration and append selected optional plugins",
         action="store_true",
     )
