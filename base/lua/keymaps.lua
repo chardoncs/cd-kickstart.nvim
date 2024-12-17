@@ -54,3 +54,24 @@ end
 
 vim.keymap.set("n", "<M-k>", vim.cmd.tabprevious, { desc = "Tabpage: Go to the previous tabpage, shorthand of `:tabprevious`" })
 vim.keymap.set("n", "<M-j>", vim.cmd.tabnext, { desc = "Tabpage: Go to the next tabpage, shorthand of `:tabnext`" })
+
+vim.keymap.set(
+  "n",
+  "<M-S-k>",
+  function ()
+    if not pcall(vim.cmd.tabmove, "-1") then
+      vim.api.nvim_err_writeln("Cannot move the tabpage to the left")
+    end
+  end,
+  { desc = "Tabpage: Move current tabpage leftward" }
+)
+vim.keymap.set(
+  "n",
+  "<M-S-j>",
+  function ()
+    if not pcall(vim.cmd.tabmove, "+1") then
+      vim.api.nvim_err_writeln("Cannot move the tabpage to the right")
+    end
+  end,
+  { desc = "Tabpage: Move current tabpage rightward" }
+)
