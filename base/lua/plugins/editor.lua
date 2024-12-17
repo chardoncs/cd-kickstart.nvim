@@ -80,71 +80,46 @@ return {
   },
   -- Indentation guessing
   {
-    "hrsh7th/nvim-dansa",
+    "chardoncs/indent-wizard.nvim",
     opts = {
-      enabled = true,
-      scan_offset = 100,
-      cutoff_count = 5,
-      default = {
-        expandtab = true,
-        space = {
-          shiftwidth = 4,
-        },
-        tab = {
-          shiftwidth = 4,
-        },
+      auto_guess = true,
+      scan = {
+        line_count = 60,
       },
-    },
-    init = function ()
-      local setup = require("dansa").setup
-
-      -- Reserve tabs for Go
-      setup.filetype('go', {
-        default = {
-          expandtab = false,
-          tab = {
+      defaults = {
+        {
+          ft = "go",
+          options = {
+            expandtab = false,
             shiftwidth = 4,
           },
         },
-      })
-
-      local function set_2_spaces(fts)
-        for _, ft in pairs(fts) do
-          setup.filetype(ft, {
-            default = {
-              expandtab = true,
-              space = {
-                shiftwidth = 2,
-              },
-              tab = {
-                shiftwidth = 4,
-              },
-            },
-          })
-        end
-      end
-
-      -- 2-space indent by default for certain file types
-      set_2_spaces({
-        "css",
-        "dart",
-        "elm",
-        "gleam",
-        "html",
-        "javascript",
-        "json",
-        "jsonc",
-        "lua",
-        "ocaml",
-        "r",
-        "ruby",
-        "typescript",
-        "typescriptreact",
-        "sass",
-        "svelte",
-        "yaml",
-      })
-    end
+        {
+          ft = {
+            "css",
+            "dart",
+            "elm",
+            "gleam",
+            "html",
+            "javascript",
+            "json",
+            "jsonc",
+            "lua",
+            "ocaml",
+            "r",
+            "ruby",
+            "typescript",
+            "typescriptreact",
+            "sass",
+            "svelte",
+            "yaml",
+          },
+          options = {
+            shiftwidth = 2,
+          },
+        },
+      },
+    },
   },
   -- Large file loading acceleration
   --
