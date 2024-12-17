@@ -81,24 +81,22 @@ return {
   -- Indentation guessing
   {
     "hrsh7th/nvim-dansa",
-    branch = "main",
-    event = "VeryLazy",
-    config = function ()
-      local setup = require("dansa").setup
-
-      setup({
-        scan_offset = 100,
-        cutoff_count = 5,
-        default = {
-          expandtab = true,
-          space = {
-            shiftwidth = 4,
-          },
-          tab = {
-            shiftwidth = 4,
-          },
+    opts = {
+      enabled = true,
+      scan_offset = 100,
+      cutoff_count = 5,
+      default = {
+        expandtab = true,
+        space = {
+          shiftwidth = 4,
         },
-      })
+        tab = {
+          shiftwidth = 4,
+        },
+      },
+    },
+    init = function ()
+      local setup = require("dansa").setup
 
       -- Reserve tabs for Go
       setup.filetype('go', {
@@ -114,8 +112,12 @@ return {
         for _, ft in pairs(fts) do
           setup.filetype(ft, {
             default = {
+              expandtab = true,
               space = {
                 shiftwidth = 2,
+              },
+              tab = {
+                shiftwidth = 4,
               },
             },
           })
@@ -153,6 +155,7 @@ return {
   -- Trouble panel
   {
     "folke/trouble.nvim",
+    lazy = true,
     opts = {},
     cmd = "Trouble",
     keys = {
