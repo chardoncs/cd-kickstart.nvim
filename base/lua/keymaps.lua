@@ -54,3 +54,24 @@ end
 
 vim.keymap.set("n", "<M-k>", vim.cmd.tabprevious, { desc = "Tabpage: Go to the previous tabpage, shorthand of `:tabprevious`" })
 vim.keymap.set("n", "<M-j>", vim.cmd.tabnext, { desc = "Tabpage: Go to the next tabpage, shorthand of `:tabnext`" })
+
+vim.keymap.set(
+  "n", "<leader>tt",
+  function ()
+    vim.cmd.tabnew()
+    vim.cmd.terminal()
+    vim.cmd.startinsert()
+  end,
+  { desc = "Open builtin [t]erminal in a new tabpage" }
+)
+
+vim.keymap.set(
+  "n", "<leader>gg",
+  function ()
+    vim.cmd.tabnew()
+    vim.cmd.terminal()
+    vim.fn.chansend(vim.bo.channel, "lazygit\n")
+    vim.cmd.startinsert()
+  end,
+  { desc = "Open Lazy[G]it in a builtin terminal in a new tabpage" }
+)
