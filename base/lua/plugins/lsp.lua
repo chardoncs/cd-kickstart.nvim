@@ -70,6 +70,23 @@ return {
         -- "zls",
       })
 
+      -- Conditionally enable LSP servers based on configuration files
+
+      ---- Deno
+      --if next(vim.fs.find("deno.json", { type = "file", upward = true })) ~= nil then
+      --  default_config({ "denols" })
+      --end
+
+      ---- JavaScript/TypeScript/Svelte
+      --if next(vim.fs.find("package.json", { type = "file", upward = true })) ~= nil then
+      --  default_config({ "ts_ls", "svelte" })
+      --end
+
+      ---- ESLint
+      --if next(vim.fs.find(function (name) return name:match('^eslint%.config%.[mc]?[jt]s$') end, { type = "file", upward = true })) ~= nil then
+      --  default_config({ "eslint" })
+      --end
+
       -- Lua
       lspconfig.lua_ls.setup {
         on_init = function(client)
