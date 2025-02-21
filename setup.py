@@ -49,7 +49,7 @@ def main(args: Namespace):
             print("Target is not a directory", file=sys.stderr)
             sys.exit(1)
 
-        if any(target.iterdir()) and args.resolve == "abort" and not args.patch_mode:
+        if any(target.iterdir()) and args.resolve == "abort" and not args.append:
             print("Error: Directory not empty. Stopped in cringe...", file=sys.stderr)
             sys.exit(1)
 
@@ -57,7 +57,7 @@ def main(args: Namespace):
 
     # Base config
     print("Copying base configuration...", end=" ", flush=True)
-    if not args.patch_mode:
+    if not args.append:
         shutil.copytree(base_dir, target, dirs_exist_ok=overwrite)
         print("done")
     else:
