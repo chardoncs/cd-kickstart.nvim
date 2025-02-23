@@ -77,9 +77,9 @@ return {
       --  default_config({ "denols" })
       --end
 
-      ---- JavaScript/TypeScript/Svelte
+      ---- JavaScript/TypeScript
       --if next(vim.fs.find("package.json", { type = "file", upward = true })) ~= nil then
-      --  default_config({ "ts_ls", "svelte" })
+      --  default_config({ "ts_ls" })
       --end
 
       ---- ESLint
