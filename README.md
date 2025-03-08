@@ -31,6 +31,7 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 |     Feature      |                                 Description                                    |
 |------------------|--------------------------------------------------------------------------------|
 | `flutter`        | [Flutter](https://flutter.dev/) support, using [flutter-tools.nvim](https://github.com/nvim-flutter/flutter-tools.nvim) |
+| `dbee`           | [nvim-dbee](https://github.com/kndndrj/nvim-dbee), a database client |
 | `hardtime`       | Establish good command workflow habits using [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim)<br />NOTE: You might feel uncomfortable with it since multiple functionalities (like mouse selection, arrow keys) are disabled. |
 | `harpoon`        | [Harpoon](https://github.com/ThePrimeagen/harpoon/tree/harpoon2), switching between buffers without using a tabline |
 | `mason`          | LSP server management, using [mason.nvim](https://github.com/williamboman/mason.nvim).<br/>Otherwise, LSP servers must be managed manually or using the system package manager, and configured manually in [`lua/plugins/lsp.lua`](./base/lua/plugins/lsp.lua). |
