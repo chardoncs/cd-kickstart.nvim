@@ -16,4 +16,7 @@ require('lazy').setup("plugins", {
   rocks = {
     enabled = false,
   },
+  install = {
+    colorscheme = { "tokyonight" },
+  },
 })
