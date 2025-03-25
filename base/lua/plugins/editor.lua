@@ -21,9 +21,18 @@ return {
           {
             "mode",
             -- Display Neovim logo
-            icon = "",
+            --icon = "",
             -- Or Vim logo for nostalgic folks =)
-            -- icon = "",
+            --icon = "",
+            fmt = function (str)
+              local out = ""
+
+              for part in string.gmatch(str, "[%w]+") do
+                out = out .. string.sub(part, 0, 1)
+              end
+
+              return string.format("%-2s", out)
+            end,
           },
         },
         lualine_x = {
