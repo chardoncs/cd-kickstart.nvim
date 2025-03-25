@@ -93,7 +93,7 @@ return {
     opts = {
       auto_guess = true,
       scan = {
-        line_count = 60,
+        line_count = 20,
       },
       defaults = {
         {
