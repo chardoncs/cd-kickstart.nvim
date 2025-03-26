@@ -41,3 +41,9 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 | `startup`        | Startup window, using [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim), which will replace the default vim/neovim one. |
 | `templates`      | Templates: [.gitignore](https://github.com/wintermute-cell/gitignore.nvim) |
 | `tex`            | TeX/LaTeX support, using [VimTeX](https://github.com/lervag/vimtex/), and [telescope-bibtex.nvim](https://github.com/nvim-telescope/telescope-bibtex.nvim) for Telescope BibTeX search |
+
+## Additional setups
+
+### Luarocks
+
+I personally don't use Luarocks. To allow Lazy.nvim using Luarocks, set `rocks.enabled` to `true` in [lua/lazy_setup.lua](/base/lua/lazy_setup.lua)
