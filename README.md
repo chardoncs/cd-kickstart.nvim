@@ -9,6 +9,7 @@ Kick start your Neovim with options to choose.
 Copy and execute this command and see what's going to happen :) (You need Python 3.11+ btw)
 
 ```bash
+# Recommended, relatively easy to memorize
 curl -L kickstart.chardoncs.dev | python3 - -R -n
 # OR use the raw content link if my redirect is not working
 curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py | python3 - -R -n
