@@ -6,7 +6,7 @@ return {
     opts = {
       style = "night",
       transparent = true,
-      terminal_colors = true,
+      terminal_colors = false,
       styles = {
         sidebars = "transparent",
         floats = "dark",
