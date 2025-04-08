@@ -6,7 +6,6 @@ from pathlib import Path
 import atexit
 import platform
 import os
-import re
 import shutil
 import subprocess
 import sys
@@ -42,6 +41,10 @@ def has_local_repo() -> bool:
 
 def process_module_file(target_dir: Path, file: Path):
     if file.is_dir():
+        child_dir = target_dir / file.name
+        if not child_dir.exists():
+            os.mkdir(child_dir)
+
         for child in file.iterdir():
             process_module_file(target_dir / file.name, child)
 
@@ -117,7 +120,7 @@ def main(args: Namespace):
         root_dir = Path.cwd()
 
     base_dir = root_dir / "base"
-    options_dir = root_dir / "options"
+    modules_dir = root_dir / "modules"
 
     target: Path = args.dir / "lua" / "profiles" / args.profile\
             if args.profile\
@@ -134,44 +137,51 @@ def main(args: Namespace):
 
     overwrite = args.resolve == "overwrite"
 
-    plugin_dir = target / "lua" / "plugins"
+    target_plugin_dir = target / "lua" / "plugins"
 
     # Base config
     print("Copying base configuration...", end=" ", flush=True)
     if not args.append:
         shutil.copytree(base_dir, target, dirs_exist_ok=overwrite)
-        os.mkdir(plugin_dir)
+        os.mkdir(target_plugin_dir)
         print("done")
     else:
         print("skipped")
 
-    selected_options = [*VARIANTS[args.variant], *args.use]
+    selected_mods = {*VARIANTS[args.variant], *args.use}
 
-    print("Copying options...")
-    for option in selected_options:
-        direct_script = f"{option}.lua"
+    for excluded in args.exclude:
+        selected_mods.remove(excluded)
 
-        if (options_dir / direct_script).is_file():
-            print(f" - {option}:", end=" ", flush=True)
-            shutil.copy(file, plugin_dir / direct_script)
+    print("Installing modules...")
+    for mod_name in selected_mods:
+        direct_script = f"{mod_name}.lua"
+
+        if (modules_dir / direct_script).is_file():
+            print(f"  - {mod_name} (direct script):", end=" ", flush=True)
+            shutil.copy(file, target_plugin_dir / direct_script)
             print("done")
 
-        module_dir = options_dir / option
+        module_dir = modules_dir / mod_name
         if module_dir.is_dir():
+            print(f"  - {mod_name} (module):", end=" ", flush=True)
+
             for file in module_dir.iterdir():
                 process_module_file(target / "lua", file)
+
+            print("done")
 
     print("done")
 
     if args.nvim:
-        print("Opening neovim...", end=" ", flush=True)
+        print("Opening Neovim...", end=" ", flush=True)
         subprocess.Popen(["nvim"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print("done")
 
 
 if __name__ == "__main__":
     parser = ArgumentParser(
-        description="cd-kickstart setup tool",
+        description="cd-kickstart.nvim setup",
     )
 
     parser.add_argument(
@@ -186,7 +196,7 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "-n", "--nvim",
-        help="Launch neovim after configuration completed",
+        help="Launch Neovim after configuration completed",
         action="store_true",
     )
 
@@ -227,7 +237,16 @@ if __name__ == "__main__":
 
     parser.add_argument(
         "-u", "--use",
-        help="Use optional features. Use space to delimit multiple features",
+        help="Use optional modules. Use space to delimit",
+        action="extend",
+        nargs="+",
+        type=str,
+        default=[],
+    )
+
+    parser.add_argument(
+        "-e", "--exclude",
+        help="Exclude modules. Use space to delimit",
         action="extend",
         nargs="+",
         type=str,
