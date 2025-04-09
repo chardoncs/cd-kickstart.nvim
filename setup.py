@@ -18,7 +18,7 @@ LITE_VAR = [
     "telescope",
     "themes",
     "treesitter",
-],
+]
 DEFAULT_VAR = [
     *LITE_VAR,
     "nerd-fonts",
