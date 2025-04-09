@@ -27,11 +27,19 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 | -p, --profile    | Install config as a profile instead                                            |
 | -R, --remote     | Remote mode (Use upstream repository instead)                                  |
 | -r, --resolve    | What to do if the target directory is not empty: abort (default) or overwrite  |
-| -u, --use        | Use optional features. Use spaces to delimit multiple items                     |
+| -u, --use        | Use optional features. Use spaces to delimit multiple items                    |
+| --variant        | Variant (minimal, lite, default, slop)                                         |
 
-### Optional features
+### Variants
 
-|     Feature      |                                 Description                                    |
+- `minimal`: Only basic configurations and lazy.nvim. Good for users who just want a foundation for their customizations.
+- `lite`: `minimal` + basic plugins (Telescope, Tree-sitter configs, themes, etc.). Near-lightweight experience.
+- `default`: `lite` +  My go-to choices. Suitable for most tasks without getting too bloated.
+- `slop`: `default` + multiple plugins to make Neovim look like an IDE. Good for new users coming from bloated editors (such as VS Code or IDEA) as a transition.
+
+### Modules
+
+|     Module       |                                 Description                                    |
 |------------------|--------------------------------------------------------------------------------|
 | `dbee`           | [nvim-dbee](https://github.com/kndndrj/nvim-dbee), a database client |
 | `flutter`        | [Flutter](https://flutter.dev/) support, using [flutter-tools.nvim](https://github.com/nvim-flutter/flutter-tools.nvim) |
