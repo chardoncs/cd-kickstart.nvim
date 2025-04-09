@@ -59,7 +59,7 @@ def has_local_repo() -> bool:
     if len(result.stderr) > 0:
         return False
 
-    return str(result.stdout.strip()) == REPO_URL
+    return result.stdout.strip().decode() == REPO_URL
 
 
 def process_module_file(target_dir: Path, file: Path):
@@ -73,7 +73,7 @@ def process_module_file(target_dir: Path, file: Path):
 
         return
 
-    name_chunks = file_name.split(".")
+    name_chunks = file.name.split(".")
     name = name_chunks[0]
     ext = name_chunks[-1] if len(name_chunks) > 1 else None
     operation = name_chunks[-2] if len(name_chunks) > 2 else None
@@ -169,7 +169,10 @@ def main(args: Namespace):
     else:
         print("skipped")
 
-    selected_mods = {*VARIANTS[args.variant], *args.use}
+    selected_mods = set([
+        *(VARIANTS[args.variant] if not args.append else []),
+        *args.use,
+    ])
 
     for excluded in args.exclude:
         selected_mods.remove(excluded)
@@ -178,7 +181,8 @@ def main(args: Namespace):
     for mod_name in selected_mods:
         direct_script = f"{mod_name}.lua"
 
-        if (modules_dir / direct_script).is_file():
+        file = modules_dir / direct_script
+        if file.is_file():
             print(f"  - {mod_name} (direct script):", end=" ", flush=True)
             shutil.copy(file, target_plugin_dir / direct_script)
             print("done")
@@ -236,7 +240,7 @@ if __name__ == "__main__":
 
     variant_keys = list(VARIANTS.keys())
 
-    parse.add_argument(
+    parser.add_argument(
         "--variant",
         help="Select variant ({0})".format(", ".join(variant_keys)),
         choices=variant_keys,
