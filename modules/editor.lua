@@ -2,9 +2,6 @@ return {
   -- Tab bar
   {
     "nanozuki/tabby.nvim",
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
     opts = {
       line = function (line)
         return {
@@ -15,7 +12,6 @@ return {
               line.sep("", hl, "TabLineFill"),
               tab.number(),
               tab.name(),
-              tab.close_btn(''),
               line.sep("", hl, "TabLineFill"),
               hl = hl,
               margin = " ",
@@ -84,19 +80,4 @@ return {
   -- if the file is super large. Otherwise, Neovim will get stuck
   -- in a long loading with crazy RAM consumption.
   { "chardoncs/bigfile.nvim" },
-  -- Key hint
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {},
-    keys = {
-      {
-        "<leader>?",
-        function()
-          require("which-key").show({ global = false })
-        end,
-        desc = "which-key: Buffer Local Keymaps",
-      },
-    },
-  },
 }

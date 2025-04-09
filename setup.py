@@ -12,14 +12,32 @@ import sys
 import tempfile
 
 
+LITE_VAR = [
+    "editor",
+    "git",
+    "telescope",
+    "themes",
+    "treesitter",
+],
+DEFAULT_VAR = [
+    *LITE_VAR,
+    "nerd-fonts",
+    "lsp",
+    "lualine",
+]
+SLOP_VAR = [
+    *DEFAULT_VAR,
+    "dbee",
+    "debugger",
+    "mason",
+    "which-key",
+]
+
 VARIANTS = {
     "minimal": [],
-    "lite": [
-    ],
-    "default": [
-    ],
-    "slop": [
-    ],
+    "lite": LITE_VAR,
+    "default": DEFAULT_VAR,
+    "slop": SLOP_VAR,
 }
 
 REPO_URL = "https://github.com/chardoncs/cd-kickstart.nvim.git"
@@ -213,10 +231,12 @@ if __name__ == "__main__":
         action="store_true",
     )
 
+    variant_keys = list(VARIANTS.keys())
+
     parse.add_argument(
         "--variant",
-        help="Select variant (minimal, lite, default, slop)",
-        choices=["minimal", "lite", "default", "slop"],
+        help="Select variant ({0})".format(", ".join(variant_keys)),
+        choices=variant_keys,
         default="default"
     )
 
