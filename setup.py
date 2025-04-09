@@ -29,7 +29,12 @@ SLOP_VAR = [
     *DEFAULT_VAR,
     "dbee",
     "debugger",
+    "image",
     "mason",
+    "notification",
+    "nvim-tree",
+    "startup",
+    "templates",
     "which-key",
 ]
 
