@@ -34,7 +34,7 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 
 - `minimal`: Only basic configurations and lazy.nvim. Good for users who just want a foundation for their customizations.
 - `lite`: `minimal` + basic plugins (Telescope, Tree-sitter configs, themes, etc.). Near-lightweight experience.
-- `default`: `lite` +  My go-to choices. Suitable for most tasks without getting too bloated.
+- `default`: `lite` + basic LSP config, Lualine, and Nerd Fonts. My go-to choices. Suitable for most tasks without getting too bloated.
 - `slop`: `default` + multiple plugins to make Neovim look like an IDE. Good for new users coming from bloated editors (such as VS Code or IDEA) as a transition.
 
 ### Modules
