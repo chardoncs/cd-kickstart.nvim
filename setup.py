@@ -83,9 +83,7 @@ def process_module_file(target_dir: Path, file: Path):
 
     if not target_path.exists():
         shutil.copy(file, target_path)
-        continue
-
-    if operation == "prepend":
+    elif operation == "prepend":
         addition = file.read_text()
         content = target_path.read_text()
 
