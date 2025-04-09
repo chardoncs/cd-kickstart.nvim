@@ -194,7 +194,7 @@ def main(args: Namespace):
 
     print("done")
 
-    if args.nvim:
+    if args.open:
         print("Opening Neovim...", end=" ", flush=True)
         subprocess.Popen(["nvim"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         print("done")
@@ -216,7 +216,7 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "-n", "--nvim",
+        "-o", "--open",
         help="Launch Neovim after configuration completed",
         action="store_true",
     )
