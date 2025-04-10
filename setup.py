@@ -200,7 +200,7 @@ def main(args: Namespace):
 
     if args.open:
         print("Opening Neovim...", end=" ", flush=True)
-        subprocess.Popen(["nvim"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        subprocess.run(["nvim"])
         print("done")
 
 
