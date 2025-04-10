@@ -10,9 +10,9 @@ Copy and execute this command and see what's going to happen :) (You need Python
 
 ```bash
 # Recommended, relatively easy to memorize
-curl -L kickstart.chardoncs.dev | python3 - -R -n
+curl -L kickstart.chardoncs.dev | python3 - -o
 # OR use the raw content link if my redirect is not working
-curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py | python3 - -R -n
+curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py | python3 - -o
 ```
 
 ## Setup script
@@ -27,16 +27,24 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 | -p, --profile    | Install config as a profile instead                                            |
 | -R, --remote     | Remote mode (Use upstream repository instead)                                  |
 | -r, --resolve    | What to do if the target directory is not empty: abort (default) or overwrite  |
-| -u, --use        | Use optional features. Use spaces to delimit multiple items                     |
+| -u, --use        | Use optional features. Use spaces to delimit multiple items                    |
+| --variant        | Variant (minimal, lite, default, slop)                                         |
 
-### Optional features
+### Variants
 
-|     Feature      |                                 Description                                    |
+- `minimal`: Only basic configurations and lazy.nvim. Good for users who just want a foundation for their customizations.
+- `lite`: `minimal` + basic plugins (Telescope, Tree-sitter configs, themes, etc.). Near-lightweight experience.
+- `default`: `lite` + basic LSP config, Lualine, and Nerd Fonts. My go-to choices. Suitable for most tasks without getting too bloated.
+- `slop`: `default` + multiple plugins to make Neovim look like an IDE. Good for new users coming from bloated editors (such as VS Code or IDEA) as a transition.
+
+### Modules
+
+|     Module       |                                 Description                                    |
 |------------------|--------------------------------------------------------------------------------|
 | `dbee`           | [nvim-dbee](https://github.com/kndndrj/nvim-dbee), a database client |
 | `flutter`        | [Flutter](https://flutter.dev/) support, using [flutter-tools.nvim](https://github.com/nvim-flutter/flutter-tools.nvim) |
 | `hardtime`       | Establish good command workflow habits using [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim)<br />NOTE: You might feel uncomfortable with it since multiple functionalities (like mouse selection, arrow keys) are disabled. |
-| `harpoon`        | [Harpoon](https://github.com/ThePrimeagen/harpoon/tree/harpoon2), switching between buffers without using a tabline |
+| `harpoon`        | [Harpoon](https://github.com/ThePrimeagen/harpoon/tree/harpoon2), switching between buffers without using a tabline or bufferline |
 | `mason`          | LSP server management, using [mason.nvim](https://github.com/williamboman/mason.nvim).<br/>Otherwise, LSP servers must be managed manually or using the system package manager, and configured manually in [`lua/plugins/lsp.lua`](./base/lua/plugins/lsp.lua). |
 | `notification`   | Notification toasts, using [nvim-notify](https://github.com/rcarriga/nvim-notify) |
 | `quarto`         | [Quarto](https://quarto.org/) support, using [official plugin](https://github.com/quarto-dev/quarto-nvim) |

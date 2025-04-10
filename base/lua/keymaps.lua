@@ -45,15 +45,16 @@ for i = 1, 10 do
     string.format("<M-%d>", i % 10),
     function ()
       if not pcall(vim.cmd.tabn, i) then
-        vim.api.nvim_err_writeln(string.format("Tabpage %d does not exist", i))
+        vim.print(string.format("Tabpage %d does not exist", i))
       end
     end,
     { desc = string.format("Tabpage: Go to the %d%s tabpage", i, ordinal_suffixes[i % 10] or "th") }
   )
 end
 
-vim.keymap.set("n", "<M-k>", vim.cmd.tabprevious, { desc = "Tabpage: Go to the previous tabpage, shorthand of `:tabprevious`" })
-vim.keymap.set("n", "<M-j>", vim.cmd.tabnext, { desc = "Tabpage: Go to the next tabpage, shorthand of `:tabnext`" })
+vim.keymap.set("n", "<M-p>", vim.cmd.tabprevious, { desc = "Tabpage: Go to the [p]revious tabpage, shorthand of `:tabprevious`" })
+
+vim.keymap.set("n", "<M-n>", vim.cmd.tabnext, { desc = "Tabpage: Go to the [n]ext tabpage, shorthand of `:tabnext`" })
 
 vim.keymap.set(
   "n", "<leader>tt",
