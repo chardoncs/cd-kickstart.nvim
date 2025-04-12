@@ -56,6 +56,6 @@ curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py
 
 ## Additional setups
 
-### Luarocks
+### LuaRocks
 
-I personally don't use Luarocks. To allow Lazy.nvim using Luarocks, set `rocks.enabled` to `true` in [lua/lazy_setup.lua](/base/lua/lazy_setup.lua)
+I personally don't use LuaRocks for Neovim. To allow Lazy.nvim using Luarocks, set `rocks.enabled` to `true` in [lua/lazy_setup.lua](/base/lua/lazy_setup.lua)
