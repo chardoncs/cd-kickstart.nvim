@@ -1,7 +1,7 @@
 return {
   -- Treesitter pattens
   --
-  -- NOTE: requies a C compiler (GCC or Clang) and libstdc++ for compiling patterns
+  -- NOTE: Requires a C compiler (GCC or Clang) and libstdc++ for compiling patterns
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
