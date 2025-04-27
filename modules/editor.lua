@@ -35,7 +35,7 @@ return {
   {
     "chardoncs/indent-wizard.nvim",
     opts = {
-      auto_guess = true,
+      auto_guess = false,
       scan = {
         line_count = 20,
       },
