@@ -3,19 +3,19 @@ return {
     "lervag/vimtex",
     ft = { "tex", "bib" },
     config = function ()
-      vim.g.vimtex_compiler_latexmk_engines = {
-        ["_"] = '-xelatex'
-      }
+      --vim.g.vimtex_compiler_latexmk_engines = {
+      --  ["_"] = '-xelatex'
+      --}
 
-      vim.g.vimtex_compiler_latexmk = {
-        ['options'] = {
-          "-verbose",
-          "-file-line-error",
-          "-synctex=1",
-          "-interaction=nonstopmode",
-          "-shell-escape",
-        }
-      }
+      --vim.g.vimtex_compiler_latexmk = {
+      --  ['options'] = {
+      --    "-verbose",
+      --    "-file-line-error",
+      --    "-synctex=1",
+      --    "-interaction=nonstopmode",
+      --    "-shell-escape",
+      --  }
+      --}
     end,
   },
   -- Equation display
