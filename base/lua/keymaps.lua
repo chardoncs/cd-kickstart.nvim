@@ -62,7 +62,7 @@ for i = 1, 10 do
     "n",
     string.format("<M-S-%d>", i % 10),
     function ()
-      if not pcall(vim.cmd.tabmove, i) then
+      if not pcall(vim.cmd.tabmove, i - (i < vim.fn.tabpagenr() and 1 or 0)) then
         vim.print(string.format("Tabpage %d does not exist", i))
       end
     end,
