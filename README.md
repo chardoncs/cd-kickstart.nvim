@@ -10,7 +10,7 @@ Copy and execute this command and see what's going to happen :) (You need Python
 
 ```bash
 # Recommended, relatively easy to memorize
-curl -L kickstart.chardoncs.dev | python3 - -o
+curl -fsSL kickstart.chardoncs.dev | python3 - -o
 # OR use the raw content link if my redirect is not working
 curl https://raw.githubusercontent.com/chardoncs/cd-kickstart.nvim/main/setup.py | python3 - -o
 ```
