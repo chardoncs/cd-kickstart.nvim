@@ -41,7 +41,10 @@ return {
       },
       defaults = {
         {
-          ft = "go",
+          ft = {
+            "asm",
+            "go",
+          },
           options = {
             expandtab = false,
             shiftwidth = 4,
