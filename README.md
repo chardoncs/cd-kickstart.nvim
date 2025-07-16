@@ -9,6 +9,12 @@ Kick start your Neovim with options to choose.
 Copy and execute this command (btw you need Python 3)
 
 ```bash
+curl -fsSL kickstart.chardoncs.dev/setup.py | python3 - -o
+```
+
+or simply
+
+```bash
 curl -fsSL kickstart.chardoncs.dev | python3 - -o
 ```
 
@@ -20,7 +26,7 @@ curl -fsSL kickstart.chardoncs.dev | python3 - -o
 |------------------|--------------------------------------------------------------------------------|
 | -a, --append     | Skip base configuration and append selected optional features                  |
 | -d, --dir        | Specify directory to install<br />By default: `~/.config/nvim/` (Linux), `~/.config/neovim` (MacOS), `~\AppData\Local\nvim` (Windows) |
-| -o, --open       | Open neovim after the configuration completed                                  |
+| -o, --open       | Open Neovim after the configuration completed                                  |
 | -p, --profile    | Install config as a profile instead                                            |
 | -R, --remote     | Remote mode (Use upstream repository instead)                                  |
 | -r, --resolve    | What to do if the target directory is not empty: abort (default) or overwrite  |
