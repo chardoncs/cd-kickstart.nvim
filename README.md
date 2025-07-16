@@ -26,14 +26,14 @@ curl -fsSL kickstart.chardoncs.dev | python3 - -o
 | -r, --resolve    | What to do if the target directory is not empty: abort (default) or overwrite  |
 | -u, --use        | Include modules. Use spaces to delimit multiple items                          |
 | -e, --exclude    | Exclude modules                                                                |
-| --variant        | Variant (minimal, lite, default, slop)                                         |
+| --variant        | Variant (`minimal`, `lite`, `default`, `full`)                                         |
 
 ### Variants
 
 - `minimal`: Only basic configurations and lazy.nvim. Good for users who just want a foundation for their customizations.
 - `lite`: `minimal` + basic plugins (Telescope, Tree-sitter configs, themes, etc.). Near-lightweight experience.
 - `default`: `lite` + basic LSP config, Lualine, and Nerd Fonts. My go-to choices. Suitable for most tasks without getting too bloated.
-- `slop`: `default` + multiple plugins to make Neovim look like an IDE. Good for new users coming from bloated editors (such as VS Code or IDEA) as a transition.
+- `full`: `default` + multiple plugins to make Neovim look like an IDE. Good for new users coming from VS Code or IDEA as a transition.
 
 ### Modules
 

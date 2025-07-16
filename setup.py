@@ -25,7 +25,7 @@ DEFAULT_VAR = [
     "lsp",
     "lualine",
 ]
-SLOP_VAR = [
+FULL_VAR = [
     *DEFAULT_VAR,
     "dbee",
     "debugger",
@@ -42,7 +42,7 @@ VARIANTS = {
     "minimal": [],
     "lite": LITE_VAR,
     "default": DEFAULT_VAR,
-    "slop": SLOP_VAR,
+    "full": FULL_VAR,
 }
 
 REPO_URL = "https://github.com/chardoncs/cd-kickstart.nvim.git"
