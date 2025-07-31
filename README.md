@@ -2,7 +2,7 @@
 
 Kick start your Neovim with options to choose.
 
-> [Why another kickstarter?](https://github.com/chardoncs/cd-kickstart.nvim/wiki/Why-another-kickstarter%3F)
+> [Why another kickstarter?](https://github.com/chardoncs/cd-kickstart.nvim/wiki/FAQ#q-why-another-kickstarter)
 
 ## Quick start
 
