@@ -83,4 +83,18 @@ return {
   -- if the file is super large. Otherwise, Neovim will get stuck
   -- in a long loading with crazy RAM consumption.
   { "chardoncs/bigfile.nvim" },
+  -- Blankline indicator
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      indent = {
+        char = "▏",
+      },
+      scope = {
+        show_start = false,
+        show_end = false,
+      },
+    },
+  },
 }
