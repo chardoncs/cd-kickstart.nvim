@@ -9,13 +9,13 @@ Kick start your Neovim with options to choose.
 Copy and execute this command (btw you need Python 3)
 
 ```bash
-curl -fsSL kickstart.chardoncs.dev/setup.py | python3 - -o
+curl -fsSL kickstart.chardoncs.dev/setup.py | python3
 ```
 
 or simply
 
 ```bash
-curl -fsSL kickstart.chardoncs.dev | python3 - -o
+curl -fsSL kickstart.chardoncs.dev | python3
 ```
 
 ## Setup script
