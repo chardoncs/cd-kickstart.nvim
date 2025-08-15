@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from argparse import ArgumentParser, Namespace
+from difflib import unified_diff
 from pathlib import Path
 
 import atexit
@@ -152,18 +153,16 @@ def main(args: Namespace):
             print("Target is not a directory", file=sys.stderr)
             sys.exit(1)
 
-        if any(target.iterdir()) and args.resolve == "abort" and not args.append:
+        if any(target.iterdir()) and not args.force and not args.append:
             print("Error: Directory not empty. Stopped in cringe...", file=sys.stderr)
             sys.exit(1)
-
-    overwrite = args.resolve == "overwrite"
 
     target_plugin_dir = target / "lua" / "plugins"
 
     # Base config
     print("Copying base configuration...", end=" ", flush=True)
     if not args.append:
-        shutil.copytree(base_dir, target, dirs_exist_ok=overwrite)
+        shutil.copytree(base_dir, target, dirs_exist_ok=args.force)
         os.mkdir(target_plugin_dir)
         print("done")
     else:
@@ -238,6 +237,18 @@ if __name__ == "__main__":
         action="store_true",
     )
 
+    parser.add_argument(
+        "-A", "--apply",
+        help="Update the destination file/directory to the latest state",
+        action="store_true",
+    )
+
+    parser.add_argument(
+        "-f", "--force",
+        help="Skip confirmation / enforce overwriting files",
+        action="store_true",
+    )
+
     variant_keys = list(VARIANTS.keys())
 
     parser.add_argument(
@@ -245,15 +256,6 @@ if __name__ == "__main__":
         help="Select variant ({0})".format(", ".join(variant_keys)),
         choices=variant_keys,
         default="default"
-    )
-
-    parser.add_argument(
-        "-r", "--resolve",
-        help="""What to do if the target directory is not empty:
--- abort: Stop proceeding (default)
--- overwrite: Proceed anyway even files exist""",
-        choices=["abort", "overwrite"],
-        default="abort",
     )
 
     parser.add_argument(
