@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from argparse import ArgumentParser, Namespace
+from difflib import unified_diff
 from pathlib import Path
 
 import atexit
@@ -12,6 +13,13 @@ import sys
 import tempfile
 
 
+# Colors
+FG_BRIGHT_RED = '\033[91m'
+FG_BRIGHT_GREEN = '\033[92m'
+FG_BRIGHT_CYAN = '\033[96m'
+RESET = '\033[0m'
+
+# Variants
 LITE_VAR = [
     "editor",
     "git",
@@ -45,7 +53,13 @@ VARIANTS = {
     "full": FULL_VAR,
 }
 
+# Repo
 REPO_URL = "https://github.com/chardoncs/cd-kickstart.nvim.git"
+
+# LFG!
+
+def print_err(*values):
+    print("Error:", *values, file=sys.stderr)
 
 
 def clean_tmp_dir(root_dir):
@@ -123,6 +137,63 @@ def process_module_file(target_dir: Path, file: Path):
             shutil.copy(file, target_path)
 
 
+def colorize_diff(diff_lines):
+    for line in diff_lines:
+        symbol = line[0]
+        if symbol == '+':
+            yield f"{FG_BRIGHT_GREEN}{line}{RESET}"
+        elif symbol == '-':
+            yield f"{FG_BRIGHT_RED}{line}{RESET}"
+        elif symbol == '@':
+            yield f"{FG_BRIGHT_CYAN}{line}{RESET}"
+        else:
+            yield line
+
+
+def check_apply_changes(dest_path: Path, working_dir: Path, base_dir: Path, mod_dir: Path):
+    if not dest_path.is_absolute():
+        dest_path = dest_path.relative_to(working_dir).resolve()
+
+    if not dest_path.is_relative_to(working_dir):
+        print_err("Destination is not in the working directory")
+        sys.exit(1)
+
+    rel_path = dest_path.relative_to(working_dir)
+
+    dest_lines = []
+
+    if dest_path.exists():
+        with open(dest_path, 'r') as fp:
+            dest_lines = fp.readlines()
+
+    src_path = mod_dir / rel_path.name if str(rel_path.parent).endswith("lua/plugins") else base_dir / rel_path
+    if not src_path.exists():
+        print_err(f"Application source {src_path} does not exist")
+        sys.exit(1)
+
+    print("Comparing files...")
+    print()
+
+    with open(src_path, 'r') as fp:
+        src_lines = fp.readlines()
+
+    diff_lines = [*colorize_diff(unified_diff(dest_lines, src_lines, str(dest_path), str(src_path)))]
+    if len(diff_lines) < 1:
+        print("No changes found. Nothing to do.")
+        return
+
+    sys.stdout.writelines(diff_lines)
+    answer = input("Do you want to apply changes? [Y/n]: ").strip().lower()
+    if answer != '' and not answer.startswith("y"):
+        print("Aborted")
+        return
+
+    # Apply changes
+    print(f"Applying {rel_path}...", end=' ')
+    shutil.copyfile(src_path, dest_path)
+    print("done")
+
+
 def main(args: Namespace):
     if args.remote or not has_local_repo():
         root_dir = Path(tempfile.mkdtemp())
@@ -135,7 +206,7 @@ def main(args: Namespace):
         )
 
         if code:
-            print("Error: Git exited with errors", file=sys.stderr)
+            print_err("Git exited with errors")
             sys.exit(code)
     else:
         root_dir = Path.cwd()
@@ -152,18 +223,21 @@ def main(args: Namespace):
             print("Target is not a directory", file=sys.stderr)
             sys.exit(1)
 
-        if any(target.iterdir()) and args.resolve == "abort" and not args.append:
-            print("Error: Directory not empty. Stopped in cringe...", file=sys.stderr)
+        if any(target.iterdir()) and not args.force and not args.append and not args.apply:
+            print_err("Directory not empty. Stopped in cringe...")
             sys.exit(1)
 
-    overwrite = args.resolve == "overwrite"
+    if args.apply:
+        # Apply mode
+        check_apply_changes(Path(args.apply), target, base_dir, modules_dir)
+        return
 
     target_plugin_dir = target / "lua" / "plugins"
 
     # Base config
     print("Copying base configuration...", end=" ", flush=True)
     if not args.append:
-        shutil.copytree(base_dir, target, dirs_exist_ok=overwrite)
+        shutil.copytree(base_dir, target, dirs_exist_ok=args.force)
         os.mkdir(target_plugin_dir)
         print("done")
     else:
@@ -238,6 +312,19 @@ if __name__ == "__main__":
         action="store_true",
     )
 
+    parser.add_argument(
+        "-A", "--apply",
+        help="Update the destination file/directory to the latest state",
+        type=str,
+        default=None,
+    )
+
+    parser.add_argument(
+        "-f", "--force",
+        help="Skip confirmation / enforce overwriting files",
+        action="store_true",
+    )
+
     variant_keys = list(VARIANTS.keys())
 
     parser.add_argument(
@@ -245,15 +332,6 @@ if __name__ == "__main__":
         help="Select variant ({0})".format(", ".join(variant_keys)),
         choices=variant_keys,
         default="default"
-    )
-
-    parser.add_argument(
-        "-r", "--resolve",
-        help="""What to do if the target directory is not empty:
--- abort: Stop proceeding (default)
--- overwrite: Proceed anyway even files exist""",
-        choices=["abort", "overwrite"],
-        default="abort",
     )
 
     parser.add_argument(

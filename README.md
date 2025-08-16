@@ -25,14 +25,15 @@ curl -fsSL kickstart.chardoncs.dev | python3
 |    Option        |                                 Description                                    |
 |------------------|--------------------------------------------------------------------------------|
 | -a, --append     | Skip base configuration and append selected optional features                  |
+| -A, --apply      | Update the destination file/directory to the latest state                      |
 | -d, --dir        | Specify directory to install<br />By default: `~/.config/nvim/` (Linux), `~/.config/neovim` (MacOS), `~\AppData\Local\nvim` (Windows) |
 | -n, --no-open    | Do not launch Neovim after the configuration completed                         |
 | -p, --profile    | Install config as a profile instead                                            |
 | -R, --remote     | Remote mode (Use upstream repository instead)                                  |
-| -r, --resolve    | What to do if the target directory is not empty: abort (default) or overwrite  |
+| -f, --force      | Skip confirmation / enforce overwriting files                                  |
 | -u, --use        | Include modules. Use spaces to delimit multiple items                          |
 | -e, --exclude    | Exclude modules                                                                |
-| --variant        | Variant (`minimal`, `lite`, `default`, `full`)                                         |
+| --variant        | Variant (`minimal`, `lite`, `default`, `full`)                                 |
 
 ### Variants
 
