@@ -62,6 +62,14 @@ def print_err(*values):
     print("Error:", *values, file=sys.stderr)
 
 
+def ask(prompt: str):
+    if not sys.stdin.isatty():
+        return True
+
+    answer = input(f"{prompt} [Y/n]: ").strip().lower()
+    return answer == '' or answer.startswith("y")
+
+
 def clean_tmp_dir(root_dir):
     print(f"Clean up temporary directory: `{root_dir}`...", end=" ", flush=True)
     shutil.rmtree(root_dir)
@@ -183,8 +191,7 @@ def check_apply_changes(dest_path: Path, working_dir: Path, base_dir: Path, mod_
         return
 
     sys.stdout.writelines(diff_lines)
-    answer = input("Do you want to apply changes? [Y/n]: ").strip().lower()
-    if answer != '' and not answer.startswith("y"):
+    if not ask("Do you want to apply changes?"):
         print("Aborted")
         return
 
