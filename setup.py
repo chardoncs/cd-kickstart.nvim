@@ -158,7 +158,7 @@ def colorize_diff(diff_lines):
             yield line
 
 
-def check_apply_changes(dest_path: Path, working_dir: Path, base_dir: Path, mod_dir: Path):
+def check_apply_changes(dest_path: Path, working_dir: Path, base_dir: Path, mod_dir: Path, force: bool):
     if not dest_path.is_absolute():
         dest_path = dest_path.relative_to(working_dir).resolve()
 
@@ -191,7 +191,7 @@ def check_apply_changes(dest_path: Path, working_dir: Path, base_dir: Path, mod_
         return
 
     sys.stdout.writelines(diff_lines)
-    if not ask("Do you want to apply changes?"):
+    if not force and not ask("Do you want to apply changes?"):
         print("Aborted")
         return
 
@@ -236,7 +236,7 @@ def main(args: Namespace):
 
     if args.apply:
         # Apply mode
-        check_apply_changes(Path(args.apply), target, base_dir, modules_dir)
+        check_apply_changes(Path(args.apply), target, base_dir, modules_dir, args.force)
         return
 
     target_plugin_dir = target / "lua" / "plugins"
