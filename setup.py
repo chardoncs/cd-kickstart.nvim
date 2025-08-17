@@ -160,7 +160,7 @@ def colorize_diff(diff_lines):
 
 def check_apply_changes(dest_path: Path, working_dir: Path, base_dir: Path, mod_dir: Path, force: bool):
     if not dest_path.is_absolute():
-        dest_path = dest_path.relative_to(working_dir).resolve()
+        dest_path = (working_dir / dest_path).resolve()
 
     if not dest_path.is_relative_to(working_dir):
         print_err("Destination is not in the working directory")
