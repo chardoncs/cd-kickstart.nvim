@@ -293,10 +293,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "-d", "--dir",
         help='Specify directory to install',
-        default={
-            "Darwin": Path.home() / ".config" / "neovim",
-            "Windows": Path.home() / "AppData" / "Local" / "nvim",
-        }.get(platform.system(), Path.home() / ".config" / "nvim"),
+        default=Path.home() / "AppData" / "Local" / "nvim" if platform.system() == 'Windows' else Path.home() / ".config" / "nvim",
         type=Path,
     )
 
