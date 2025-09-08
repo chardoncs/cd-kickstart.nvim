@@ -37,7 +37,9 @@ return {
   -- Git Blame
   {
     "FabijanZulj/blame.nvim",
-    opts = {},
+    opts = {
+      date_format = "%b %d, %Y",
+    },
     cmd = "BlameToggle",
     keys = {
       { "<leader>gb", "<cmd>BlameToggle<cr>", desc = "[G]it: Toggle [B]lame.nvim window" },
