@@ -75,7 +75,7 @@ vim.keymap.set("n", "<M-S-n>", function () vim.cmd.tabmove("+") end, { desc = "T
 
 -- Open Terminal
 vim.keymap.set(
-  "n", "<leader>tt",
+  "n", "<M-S-t>",
   function ()
     vim.cmd.tabnew()
     vim.cmd.terminal()
