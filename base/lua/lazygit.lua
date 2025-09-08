@@ -31,5 +31,5 @@ vim.keymap.set(
     end
     vim.cmd.startinsert()
   end,
-  { desc = "Open Lazy[G]it in a builtin terminal in a new tabpage" }
+  { desc = "[G]it: Open [L]azyGit in a builtin terminal in a new tabpage" }
 )

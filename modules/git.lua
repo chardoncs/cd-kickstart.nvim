@@ -11,7 +11,7 @@ return {
       {
         "<leader>gg",
         "<cmd>Neogit<cr>",
-        desc = "Neo[g]it: Open Neogit",
+        desc = "[G]it: Open Neo[g]it",
       },
     },
     init = function ()
@@ -33,5 +33,14 @@ return {
     'akinsho/git-conflict.nvim',
     opts = {},
     event = "VeryLazy",
+  },
+  -- Git Blame
+  {
+    "FabijanZulj/blame.nvim",
+    opts = {},
+    cmd = "BlameToggle",
+    keys = {
+      { "<leader>gb", "<cmd>BlameToggle<cr>", desc = "[G]it: Toggle [B]lame.nvim window" },
+    },
   },
 }
