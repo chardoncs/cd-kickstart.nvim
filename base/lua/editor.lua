@@ -99,3 +99,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
     vim.opt_local.number = false
   end
 })
+
+-- Cursor line
+vim.o.cursorline = true
