@@ -191,6 +191,8 @@ def check_apply_changes(dest_path: Path, working_dir: Path, base_dir: Path, mod_
         return
 
     sys.stdout.writelines(diff_lines)
+    print()
+
     if not force and not ask("Do you want to apply changes?"):
         print("Aborted")
         return
