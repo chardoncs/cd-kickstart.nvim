@@ -51,6 +51,7 @@ curl -fsSL kickstart.chardoncs.dev | python3
 | `hardtime`       | Establish good command workflow habits using [hardtime.nvim](https://github.com/m4xshen/hardtime.nvim)<br />NOTE: You might feel uncomfortable with it since multiple functionalities (like mouse selection, arrow keys) are disabled. |
 | `harpoon`        | ThePrimeagen's [Harpoon](https://github.com/ThePrimeagen/harpoon/tree/harpoon2), an opinionated tool for switching between buffers without using a tabline or bufferline |
 | `mason`          | LSP server management, using [mason.nvim](https://github.com/williamboman/mason.nvim).<br/>Otherwise, LSP servers must be managed manually or using the system package manager, and configured manually in `lua/plugins/lsp.lua`. |
+| `nvim-tree`      | [`nvim-tree`](https://github.com/nvim-tree/nvim-tree.lua), a file explorer tree |
 | `notification`   | Notification toasts, using [nvim-notify](https://github.com/rcarriga/nvim-notify) |
 | `quarto`         | [Quarto](https://quarto.org/) support, using [official plugin](https://github.com/quarto-dev/quarto-nvim) |
 | `snacks`         | [snacks.nvim](https://github.com/folke/snacks.nvim), a collection of useful utilities (many overlapped with current plugins) developed by [Folke](https://github.com/folke) |
