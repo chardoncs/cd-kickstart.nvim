@@ -64,7 +64,8 @@ def print_err(*values):
 
 def ask(prompt: str):
     if not sys.stdin.isatty():
-        return True
+        print("Cannot interact with TTY (stdin probably piped). Use -f to skip confirmation.")
+        return False
 
     answer = input(f"{prompt} [Y/n]: ").strip().lower()
     return answer == '' or answer.startswith("y")
