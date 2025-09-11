@@ -53,6 +53,7 @@ curl -fsSL kickstart.chardoncs.dev | python3
 | `mason`          | LSP server management, using [mason.nvim](https://github.com/williamboman/mason.nvim).<br/>Otherwise, LSP servers must be managed manually or using the system package manager, and configured manually in `lua/plugins/lsp.lua`. |
 | `notification`   | Notification toasts, using [nvim-notify](https://github.com/rcarriga/nvim-notify) |
 | `nvim-tree`      | [`nvim-tree`](https://github.com/nvim-tree/nvim-tree.lua), a file explorer tree |
+| `prettier`       | [Prettier](https://prettier.io/) support using the official [`vim-prettier`](https://github.com/prettier/vim-prettier) |
 | `quarto`         | [Quarto](https://quarto.org/) support, using [official plugin](https://github.com/quarto-dev/quarto-nvim) |
 | `snacks`         | [snacks.nvim](https://github.com/folke/snacks.nvim), a collection of useful utilities (many overlapped with current plugins) developed by [Folke](https://github.com/folke) |
 | `startup`        | Startup window, using [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim), which will replace the default vim/neovim one. |
