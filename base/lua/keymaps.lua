@@ -83,3 +83,10 @@ vim.keymap.set(
   end,
   { desc = "Open builtin [t]erminal in a new tabpage" }
 )
+
+vim.keymap.set(
+  "n",
+  "<C-[>",
+  function () vim.lsp.buf.references() end,
+  { desc = "LSP: Show references" }
+)
