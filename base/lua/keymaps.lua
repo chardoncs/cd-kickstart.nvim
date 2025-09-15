@@ -86,7 +86,7 @@ vim.keymap.set(
 
 vim.keymap.set(
   "n",
-  "<C-[>",
+  "<C-M-]>",
   function () vim.lsp.buf.references() end,
   { desc = "LSP: Show references" }
 )
