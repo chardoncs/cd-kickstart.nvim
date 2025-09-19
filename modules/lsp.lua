@@ -56,15 +56,13 @@ return {
       "hrsh7th/cmp-nvim-lsp-signature-help",
     },
     config = function ()
-      local lspconfig = require("lspconfig")
-
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
       local function default_config(t)
         for _, name in ipairs(t) do
-          lspconfig[name].setup {
+          vim.lsp.config(name, {
             capabilities = capabilities,
-          }
+          })
         end
       end
 
@@ -84,14 +82,14 @@ return {
       -- Conditionally enable LSP servers based on configuration files
 
       ---- Deno
-      --lspconfig.denols.setup {
+      --vim.lsp.config("denols", {
       --  root_markers = { "deno.json", "deno.jsonc" },
-      --}
+      --})
 
       ---- JavaScript/TypeScript
-      --lspconfig.ts_ls.setup {
+      --vim.lsp.config("ts_ls", {
       --  root_markers = { "package.json" },
-      --}
+      --})
 
       ---- ESLint
       --if next(vim.fs.find(function (name) return name:match('^eslint%.config%.[mc]?[jt]s$') end, { type = "file", upward = true })) ~= nil then
@@ -99,7 +97,7 @@ return {
       --end
 
       -- Lua
-      lspconfig.lua_ls.setup {
+      vim.lsp.config("lua_ls", {
         on_init = function(client)
           local path = client.workspace_folders[1].name
           -- Use local config file if exists
@@ -125,7 +123,7 @@ return {
           Lua = {},
         },
         capabilities = capabilities,
-      }
+      })
 
       -- Other config here for LSP servers that need special care.
     end,
