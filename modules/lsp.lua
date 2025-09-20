@@ -63,6 +63,8 @@ return {
           vim.lsp.config(name, {
             capabilities = capabilities,
           })
+
+          vim.lsp.enable(name)
         end
       end
 
@@ -85,11 +87,13 @@ return {
       --vim.lsp.config("denols", {
       --  root_markers = { "deno.json", "deno.jsonc" },
       --})
+      --vim.lsp.enable("denols")
 
       ---- JavaScript/TypeScript
       --vim.lsp.config("ts_ls", {
       --  root_markers = { "package.json" },
       --})
+      --vim.lsp.enable("ts_ls")
 
       ---- ESLint
       --if next(vim.fs.find(function (name) return name:match('^eslint%.config%.[mc]?[jt]s$') end, { type = "file", upward = true })) ~= nil then
@@ -99,7 +103,7 @@ return {
       -- Lua
       vim.lsp.config("lua_ls", {
         on_init = function(client)
-          local path = client.workspace_folders[1].name
+          local path = vim.fn.getcwd()
           -- Use local config file if exists
           if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
             return
@@ -124,6 +128,7 @@ return {
         },
         capabilities = capabilities,
       })
+      vim.lsp.enable("lua_ls")
 
       -- Other config here for LSP servers that need special care.
     end,
