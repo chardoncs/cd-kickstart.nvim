@@ -58,77 +58,95 @@ return {
     config = function ()
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-      local function default_config(t)
-        for _, name in ipairs(t) do
-          vim.lsp.config(name, {
-            capabilities = capabilities,
-          })
+      --local root_pattern = require("lspconfig").util.root_pattern
 
-          vim.lsp.enable(name)
+      local function concat_table(first, second)
+        local output = {}
+
+        for key, value in pairs(first) do
+          output[key] = value
         end
+
+        for key, value in pairs(second) do
+          output[key] = value
+        end
+
+        return output
       end
 
-      default_config({
-        -- LSP names here for default configuration
+      local function enable_configs(entries)
+        local default_extension = {
+          capabilities = capabilities,
+        }
+
+        local names = {}
+
+        for key, value in pairs(entries) do
+          local name
+          local config
+
+          -- Assign `name` and `config` based on the key-value types
+          if type(key) == "string" and type(value) == "table" then
+            name = key
+            config = concat_table(default_extension, value)
+          elseif type(value) == "string" then
+            name = value
+            config = default_extension
+          end
+
+          if name and config then
+            vim.lsp.config(name, config)
+            table.insert(names, name)
+          end
+        end
+
+        vim.lsp.enable(names)
+      end
+
+      enable_configs({
+        -- LSP names here for configuration
         --
         -- Check `:help lspconfig-all` for all options.
         --
         -- E.g.
         --
-        -- "bashls",
-        -- "clangd",
-        -- "rust_analyzer",
-        -- "zls",
+        --"bashls",
+        --"clangd",
+        --"rust_analyzer",
+        --"zls",
+        --denols = {
+        --  root_markers = { "deno.json", "deno.jsonc" },
+        --},
+        --eslint = {
+        --  root_dir = root_pattern('^eslint%.config%.[mc]?[jt]s$') or vim.fn.getcwd(),
+        --},
+        --lua_ls = {
+        --  on_init = function(client)
+        --    local path = vim.fn.getcwd()
+        --    -- Use local config file if exists
+        --    if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+        --      return
+        --    end
+
+        --    -- Default config
+        --    client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+        --      runtime = {
+        --        version = 'LuaJIT'
+        --      },
+        --      workspace = {
+        --        checkThirdParty = false,
+        --        library = {
+        --          -- Make the server aware of Neovim runtime files
+        --          vim.env.VIMRUNTIME,
+        --        },
+        --      },
+        --    })
+        --  end,
+        --  settings = {
+        --    Lua = {},
+        --  },
+        --},
       })
-
-      -- Conditionally enable LSP servers based on configuration files
-
-      ---- Deno
-      --vim.lsp.config("denols", {
-      --  root_markers = { "deno.json", "deno.jsonc" },
-      --})
-      --vim.lsp.enable("denols")
-
-      ---- JavaScript/TypeScript
-      --vim.lsp.config("ts_ls", {
-      --  root_markers = { "package.json" },
-      --})
-      --vim.lsp.enable("ts_ls")
-
-      ---- ESLint
-      --if next(vim.fs.find(function (name) return name:match('^eslint%.config%.[mc]?[jt]s$') end, { type = "file", upward = true })) ~= nil then
-      --  default_config({ "eslint" })
-      --end
-
-      -- Lua
-      vim.lsp.config("lua_ls", {
-        on_init = function(client)
-          local path = vim.fn.getcwd()
-          -- Use local config file if exists
-          if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
-            return
-          end
-
-          -- Default config
-          client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
-            runtime = {
-              version = 'LuaJIT'
-            },
-            workspace = {
-              checkThirdParty = false,
-              library = {
-                -- Make the server aware of Neovim runtime files
-                vim.env.VIMRUNTIME,
-              },
-            },
-          })
-        end,
-        settings = {
-          Lua = {},
-        },
-        capabilities = capabilities,
-      })
-      vim.lsp.enable("lua_ls")
 
       -- Other config here for LSP servers that need special care.
     end,
