@@ -83,7 +83,7 @@ return {
         function()
           require("telescope").extensions.file_browser.file_browser()
         end,
-        { desc = "Telescope: [F]ile [B]rowser in working directory" }
+        { desc = "Telescope [F]ile [B]rowser: Open in working directory" }
       )
 
       vim.keymap.set(
@@ -97,7 +97,25 @@ return {
 
           require("telescope").extensions.file_browser.file_browser({ path = path })
         end,
-        { desc = "Telescope: [F]ile [B]rowser in an arbitrary directory" }
+        { desc = "Telescope [F]ile [B]rowser: Open in an arbitrary directory" }
+      )
+    end,
+  },
+  {
+    "LukasPietzschmann/telescope-tabs",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function ()
+      require("telescope").load_extension("telescope-tabs")
+    end,
+    opts = {},
+    init = function ()
+      vim.keymap.set(
+        "n",
+        "<leader>ft",
+        function () require("telescope-tabs").list_tabs() end,
+        { desc = "Telescope Tabs: [F]ind [T]abpages" }
       )
     end,
   },
