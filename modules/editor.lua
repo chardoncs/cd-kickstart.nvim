@@ -18,14 +18,6 @@ return {
             }
           end),
           line.spacer(),
-          line.wins_in_tab(line.api.get_current_tab()).foreach(function(win)
-            return {
-              " ",
-              win.buf_name(),
-              " ",
-              hl = "TabLine",
-            }
-          end),
           hl = "TabLineFill",
         }
       end,
