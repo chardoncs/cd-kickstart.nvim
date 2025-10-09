@@ -100,7 +100,9 @@ return {
           end
         end
 
-        vim.lsp.enable(names)
+        if #names > 0 then
+          vim.lsp.enable(names)
+        end
       end
 
       enable_configs({
