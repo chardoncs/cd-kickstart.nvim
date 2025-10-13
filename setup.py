@@ -32,6 +32,7 @@ DEFAULT_VAR = [
     "nerd-fonts",
     "lsp",
     "lualine",
+    "formatter",
 ]
 FULL_VAR = [
     *DEFAULT_VAR,
