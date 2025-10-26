@@ -39,7 +39,7 @@ return {
           },
           options = {
             expandtab = false,
-            shiftwidth = 4,
+            spaces = 4,
           },
         },
         {
@@ -63,7 +63,7 @@ return {
             "yaml",
           },
           options = {
-            shiftwidth = 2,
+            spaces = 2,
           },
         },
       },
