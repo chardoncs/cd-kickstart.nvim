@@ -43,7 +43,7 @@ local ordinal_suffixes = { "st", "nd", "rd" }
 for i = 1, 10 do
   vim.keymap.set(
     "n",
-    string.format("<C-%d>", i % 10),
+    string.format("<M-%d>", i % 10),
     function ()
       if not pcall(vim.cmd.tabn, i) then
         vim.print(string.format("Tabpage %d does not exist", i))
@@ -53,14 +53,14 @@ for i = 1, 10 do
   )
 end
 
-vim.keymap.set("n", "<C-p>", vim.cmd.tabprevious, { desc = "Tabpage: Go to the [p]revious tabpage, shorthand of `:tabprevious`" })
-vim.keymap.set("n", "<C-n>", vim.cmd.tabnext, { desc = "Tabpage: Go to the [n]ext tabpage, shorthand of `:tabnext`" })
+vim.keymap.set("n", "<M-p>", vim.cmd.tabprevious, { desc = "Tabpage: Go to the [p]revious tabpage, shorthand of `:tabprevious`" })
+vim.keymap.set("n", "<M-n>", vim.cmd.tabnext, { desc = "Tabpage: Go to the [n]ext tabpage, shorthand of `:tabnext`" })
 
 -- Tab moving 
 for i = 1, 10 do
   vim.keymap.set(
     "n",
-    string.format("<C-S-%d>", i % 10),
+    string.format("<M-S-%d>", i % 10),
     function ()
       if not pcall(vim.cmd.tabmove, i - (i < vim.fn.tabpagenr() and 1 or 0)) then
         vim.print(string.format("Tabpage %d does not exist", i))
@@ -70,8 +70,8 @@ for i = 1, 10 do
   )
 end
 
-vim.keymap.set("n", "<C-S-p>", function () vim.cmd.tabmove("-") end, { desc = "Tabpage: Move current tabpage leftwards, shorthand of `:tabmove -`" })
-vim.keymap.set("n", "<C-S-n>", function () vim.cmd.tabmove("+") end, { desc = "Tabpage: Move current tabpage rightwards, shorthand of `:tabmove +`" })
+vim.keymap.set("n", "<M-S-p>", function () vim.cmd.tabmove("-") end, { desc = "Tabpage: Move current tabpage leftwards, shorthand of `:tabmove -`" })
+vim.keymap.set("n", "<M-S-n>", function () vim.cmd.tabmove("+") end, { desc = "Tabpage: Move current tabpage rightwards, shorthand of `:tabmove +`" })
 
 -- Open Terminal
 vim.keymap.set(
