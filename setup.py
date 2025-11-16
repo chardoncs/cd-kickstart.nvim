@@ -268,12 +268,14 @@ def main(args: Namespace):
         direct_script = f"{mod_name}.lua"
 
         file = modules_dir / direct_script
+        # If the module is a "direct script" (single plugin file)
         if file.is_file():
             print(f"  - {mod_name} (direct script):", end=" ", flush=True)
             shutil.copy(file, target_plugin_dir / direct_script)
             print("done")
 
         module_dir = modules_dir / mod_name
+        # If the module is a complex module (with multiple config files updating different parts)
         if module_dir.is_dir():
             print(f"  - {mod_name} (module):", end=" ", flush=True)
 
