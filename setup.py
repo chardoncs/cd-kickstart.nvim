@@ -29,6 +29,7 @@ LITE_VAR = [
 ]
 DEFAULT_VAR = [
     *LITE_VAR,
+    "dap",
     "nerd-fonts",
     "lsp",
     "lualine",
@@ -37,7 +38,6 @@ DEFAULT_VAR = [
 FULL_VAR = [
     *DEFAULT_VAR,
     "dbee",
-    "debugger",
     "image",
     "mason",
     "notification",
