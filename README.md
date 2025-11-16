@@ -42,7 +42,7 @@ curl -fsSL kickstart.chardoncs.dev | python3
 - `default`: `lite` + basic LSP config, Lualine, and Nerd Fonts. My go-to choices. Suitable for most tasks without getting too bloated.
 - `full`: `default` + multiple plugins to make Neovim look like an IDE. Good for new users coming from VS Code or IDEA as a transition.
 
-### Modules
+### Optional Modules
 
 |     Module       |                                 Description                                    |
 |------------------|--------------------------------------------------------------------------------|
