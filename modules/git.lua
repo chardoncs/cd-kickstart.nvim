@@ -45,4 +45,6 @@ return {
       { "<leader>gb", "<cmd>BlameToggle<cr>", desc = "[G]it: Toggle [B]lame.nvim window" },
     },
   },
+  -- Git sign
+  'lewis6991/gitsigns.nvim',
 }
