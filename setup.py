@@ -29,6 +29,7 @@ LITE_VAR = [
 ]
 DEFAULT_VAR = [
     *LITE_VAR,
+    "fm",
     "nerd-fonts",
     "lsp",
     "lualine",
