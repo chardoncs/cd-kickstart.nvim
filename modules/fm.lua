@@ -1,7 +1,11 @@
 return {
   {
     "stevearc/oil.nvim",
-    opts = {},
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+    },
     init = function ()
       vim.api.nvim_create_user_command("Explore", "Oil", { desc = "Alias of `Oil`" })
       vim.api.nvim_create_user_command(
