@@ -56,7 +56,6 @@ curl -fsSL kickstart.chardoncs.dev | python3
 | `nvim-tree`      | [`nvim-tree`](https://github.com/nvim-tree/nvim-tree.lua), a file explorer tree |
 | `quarto`         | [Quarto](https://quarto.org/) support, using [official plugin](https://github.com/quarto-dev/quarto-nvim) |
 | `snacks`         | [snacks.nvim](https://github.com/folke/snacks.nvim), a collection of useful utilities (many overlapped with current plugins) developed by [Folke](https://github.com/folke) |
-| `sonarlint`      | [SonarQube](https://www.sonarsource.com/products/sonarqube/) linter support using [`sonarlint.nvim`](https://gitlab.com/schrieveslaach/sonarlint.nvim).<br />NOTE: Java Runtime is required for running SonarLint. |
 | `startup`        | Startup window, using [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim), which will replace the default vim/neovim one. |
 | `tex`            | TeX/LaTeX support, using [VimTeX](https://github.com/lervag/vimtex/), and [telescope-bibtex.nvim](https://github.com/nvim-telescope/telescope-bibtex.nvim) for Telescope BibTeX search |
 
