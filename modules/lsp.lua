@@ -5,7 +5,7 @@ return {
   },
   {
     "hrsh7th/nvim-cmp",
-    event = "VeryLazy",
+    lazy = true,
     dependencies = {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
