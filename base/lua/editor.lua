@@ -101,7 +101,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 })
 
 -- Cursor line
-vim.o.cursorline = true
+vim.o.cursorline = false
 
 -- LSP
 vim.diagnostic.config({
