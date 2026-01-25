@@ -1,6 +1,6 @@
 return {
-  -- Tokyo Night 
   {
+    -- Tokyo Night
     "folke/tokyonight.nvim",
     priority = 1000,
     opts = {
@@ -11,7 +11,7 @@ return {
         sidebars = "transparent",
         floats = "dark",
       },
-      lualine_bold = true,
+      --lualine_bold = true,
       cache = true,
       plugins = {
         auto = true,
