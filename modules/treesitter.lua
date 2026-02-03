@@ -49,7 +49,7 @@ return {
           if has_value(M.available_fts, ft) then
             -- Install filetype
             if not has_value(M.installed_fts, ft) then
-              require("nvim-treesitter").install(ft)
+              require("nvim-treesitter").install(ft):wait(120000)
               M:update_fts()
             end
 
