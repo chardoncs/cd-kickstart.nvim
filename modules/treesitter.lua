@@ -22,6 +22,11 @@ function M:update_fts()
   self.installed_fts = require("nvim-treesitter").get_installed()
 end
 
+local function treesitter_start()
+  M:update_fts()
+  vim.treesitter.start()
+end
+
 return {
   -- Treesitter pattens
   --
@@ -37,7 +42,7 @@ return {
     init = function ()
       M:init()
 
-      local group = vim.api.nvim_create_augroup("treesitter-automation", { clear = false })
+      local group = vim.api.nvim_create_augroup("cd-treesitter", { clear = false })
 
       vim.api.nvim_create_autocmd('FileType', {
         group = group,
@@ -51,12 +56,13 @@ return {
             if not has_value(M.installed_fts, ft) then
               require("nvim-treesitter").install(ft)
             else
-              M:update_fts()
-              vim.treesitter.start()
+              treesitter_start()
             end
           end
         end,
       })
+
+      vim.api.nvim_create_user_command("TSStart", treesitter_start, {})
 
       -- Fold
       vim.wo[0][0].foldexpr = 'v:lua.vim.treesitter.foldexpr()'
