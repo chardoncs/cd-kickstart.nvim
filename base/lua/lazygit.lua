@@ -1,6 +1,6 @@
 local function find_lazygit_buffer()
   for _, b in pairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_get_name(b):match("/LazyGit$") then
+    if vim.api.nvim_buf_get_name(b):match("LazyGit$") then
       for i, t in ipairs(vim.api.nvim_list_tabpages()) do
         for _, w in pairs(vim.api.nvim_tabpage_list_wins(t)) do
           local buf = vim.api.nvim_win_get_buf(w)
