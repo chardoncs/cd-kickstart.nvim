@@ -90,26 +90,3 @@ vim.keymap.set(
   function () vim.lsp.buf.references() end,
   { desc = "LSP: Show references" }
 )
-
-vim.keymap.set(
-  "n",
-  "<M-b>",
-  function ()
-    vim.cmd.bprevious()
-
-    local buf = vim.api.nvim_get_current_buf()
-    print(buf, vim.api.nvim_buf_get_name(buf))
-  end,
-  { desc = "Go to previous buffer" }
-)
-vim.keymap.set(
-  "n",
-  "<M-f>",
-  function ()
-    vim.cmd.bnext()
-
-    local buf = vim.api.nvim_get_current_buf()
-    print(buf, vim.api.nvim_buf_get_name(buf))
-  end,
-  { desc = "Go to next buffer" }
-)
