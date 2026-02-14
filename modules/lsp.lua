@@ -147,7 +147,7 @@ return {
           { name = "otter" },
         },
         completion = {
-          autocomplete = true,
+          --autocomplete = false,
         },
       }
     end,
