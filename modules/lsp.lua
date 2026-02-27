@@ -89,6 +89,10 @@ local function register_lsp(default_config)
     --    Lua = {},
     --  },
     --},
+    --ts_ls = {
+    --  root_markers = { "package.json" },
+    --  filetypes = { "javascript", "jsx", "typescript", "tsx" }, -- Override filetypes
+    --},
   })
 
   -- Other config here for LSP servers that need special care.
