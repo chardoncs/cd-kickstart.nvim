@@ -78,6 +78,7 @@ return {
       extension = {
         tsx = "tsx",
         jsx = "jsx",
+        cs = "c_sharp",
       },
     })
   },
