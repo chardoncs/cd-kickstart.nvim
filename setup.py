@@ -30,10 +30,11 @@ LITE_VAR = [
 DEFAULT_VAR = [
     *LITE_VAR,
     "fm",
+    "formatter",
     "nerd-fonts",
     "lsp",
     "lualine",
-    "formatter",
+    "orgmode",
 ]
 FULL_VAR = [
     *DEFAULT_VAR,
