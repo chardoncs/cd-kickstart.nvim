@@ -149,6 +149,7 @@ return {
           { name = "emoji" },
           { name = "spell" },
           { name = "otter" },
+          { name = "orgmode" },
         },
         completion = {
           --autocomplete = false,
