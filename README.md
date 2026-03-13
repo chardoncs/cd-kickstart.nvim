@@ -54,7 +54,7 @@ curl -fsSL kickstart.chardoncs.dev | python3
 | `neotest`        | [Neotest](https://github.com/nvim-neotest/neotest), a unit test interaction framework |
 | `notification`   | Notification toasts, using [nvim-notify](https://github.com/rcarriga/nvim-notify) |
 | `nvim-tree`      | [`nvim-tree`](https://github.com/nvim-tree/nvim-tree.lua), a file explorer tree |
-| `orgmode`        | [Orgmode](https://orgmode.org/) support using [nvim-orgmode](https://github.com/nvim-orgmode/orgmode), an Orgmode implementation for Neovim |
+| `orgmode`        | [Orgmode](https://orgmode.org/) support |
 | `quarto`         | [Quarto](https://quarto.org/) support, using [official plugin](https://github.com/quarto-dev/quarto-nvim) |
 | `snacks`         | [snacks.nvim](https://github.com/folke/snacks.nvim), a collection of useful utilities (many overlapped with current plugins) developed by [Folke](https://github.com/folke) |
 | `startup`        | Startup window, using [dashboard-nvim](https://github.com/nvimdev/dashboard-nvim), which will replace the default vim/neovim one. |
