@@ -148,7 +148,7 @@ return {
           { name = "calc" },
           { name = "emoji" },
           { name = "spell" },
-          { name = "otter" },
+          --{ name = "otter" },
           { name = "orgmode" },
         },
         completion = {
