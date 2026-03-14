@@ -6,26 +6,25 @@ return {
       org_agenda_files = "~/orgfiles/**/*",
       org_default_notes_file = "~/orgfiles/refile.org",
     },
+    init = function ()
+      -- Experimental LSP support
+      vim.lsp.enable('org')
+    end,
   },
   {
     "chipsenkbeil/org-roam.nvim",
     event = "VeryLazy",
     dependencies = {
-      {
-        "nvim-orgmode/orgmode",
-        tag = "0.7.0",
+      "nvim-orgmode/orgmode",
+    },
+    opts = {
+      directory = "~/org_roam_files",
+      org_files = {
+        --"~/another_org_dir",
+        --"~/some/folder/*.org",
+        --"~/a/single/org_file.org",
       },
     },
-    config = function()
-      require("org-roam").setup({
-        directory = "~/org_roam_files",
-        org_files = {
-          --"~/another_org_dir",
-          --"~/some/folder/*.org",
-          --"~/a/single/org_file.org",
-        }
-      })
-    end
   },
   {
     "nvim-orgmode/telescope-orgmode.nvim",
