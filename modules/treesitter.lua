@@ -32,7 +32,7 @@ return {
   --
   -- NOTE: Requires a C compiler (GCC or Clang) and libstdc++ for compiling patterns
   {
-    "nvim-treesitter/nvim-treesitter",
+    "https://codeberg.org/chardoncs/nvim-treesitter",
     lazy = false,
     build = ":TSUpdate",
     branch = "main",
