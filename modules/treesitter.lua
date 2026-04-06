@@ -48,13 +48,18 @@ return {
         group = group,
         pattern = "*",
         callback = function()
+          local a = require('nvim-treesitter.async')
+
           local ft = vim.bo.filetype
 
           -- Activate Tree-sitter when available
           if has_value(M.available_fts, ft) then
             -- Install filetype
             if not has_value(M.installed_fts, ft) then
-              require("nvim-treesitter").install(ft)
+              a.arun(function ()
+                a.await(require("nvim-treesitter").install(ft))
+                treesitter_start()
+              end)
             else
               treesitter_start()
             end
