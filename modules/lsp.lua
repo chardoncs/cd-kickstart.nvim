@@ -109,69 +109,49 @@ return {
     end,
   },
   {
-    "hrsh7th/nvim-cmp",
-    lazy = true,
-    enabled = enable_cmp,
-    dependencies = {
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-calc",
-      "hrsh7th/cmp-emoji",
-      "f3fora/cmp-spell",
-      "L3MON4D3/LuaSnip",
-    },
-    config = function ()
-      local cmp = require('cmp')
-      cmp.setup {
-        snippet = {
-          expand = function(args)
-            local luasnip = require("luasnip")
-
-            luasnip.lsp_expand(args.body)
-            -- Map file type to snippets
-            luasnip.filetype_extend('quarto', { 'markdown' })
-            luasnip.filetype_extend('rmarkdown', { 'markdown' })
-          end,
-        },
-        window = {},
-        mapping = cmp.mapping.preset.insert({
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<CR>'] = cmp.mapping.confirm({ select = false }),
-          ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-          ["<C-e>"] = cmp.mapping.abort(),
-        }),
-        sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'buffer' },
-          { name = "path" },
-          { name = "calc" },
-          { name = "emoji" },
-          { name = "spell" },
-          --{ name = "otter" },
-          { name = "orgmode" },
-        },
-        completion = {
-          --autocomplete = false,
-        },
-      }
-    end,
-  },
-  {
-    "hrsh7th/cmp-nvim-lsp",
+    "saghen/blink.cmp",
     event = enable_cmp and "VeryLazy" or nil,
     enabled = enable_cmp,
     dependencies = {
       "neovim/nvim-lspconfig",
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "rafamadriz/friendly-snippets",
     },
-    config = function ()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    version = '1.*',
+    init = function ()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
       register_lsp({
         capabilities = capabilities,
       })
     end,
+    opts = {
+      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+      -- 'super-tab' for mappings similar to vscode (tab to accept)
+      -- 'enter' for enter to accept
+      -- 'none' for no mappings
+      --
+      -- All presets have the following mappings:
+      -- C-space: Open menu or open docs if already open
+      -- C-n/C-p or Up/Down: Select next/previous item
+      -- C-e: Hide menu
+      -- C-k: Toggle signature help (if signature.enabled = true)
+      --
+      -- See :h blink-cmp-config-keymap for defining your own keymap
+      keymap = { preset = 'default' },
+
+      completion = {
+        documentation = {
+          auto_show = true,
+        },
+      },
+      sources = {
+        --default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+
+      fuzzy = {
+        implementation = "prefer_rust_with_warning",
+      },
+    },
+    opts_extend = { "sources.default" }
   },
   -- Trouble panel
   {
