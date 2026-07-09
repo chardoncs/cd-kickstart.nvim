@@ -29,6 +29,8 @@ LITE_VAR = [
 ]
 DEFAULT_VAR = [
     *LITE_VAR,
+    "dap",
+    "dap-adapters",
     "fm",
     "formatter",
     "nerd-fonts",
@@ -38,7 +40,6 @@ DEFAULT_VAR = [
 ]
 FULL_VAR = [
     *DEFAULT_VAR,
-    "dap",
     "dbee",
     "image",
     "mason",
