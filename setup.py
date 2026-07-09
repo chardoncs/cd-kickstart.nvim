@@ -47,7 +47,6 @@ FULL_VAR = [
     "notification",
     "nvim-tree",
     "startup",
-    "templates",
     "which-key",
 ]
 
