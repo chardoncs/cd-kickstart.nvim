@@ -1,6 +1,6 @@
 return {
   {
-    'mfussenegger/nvim-dap',
+    'https://codeberg.org/mfussenegger/nvim-dap',
     event = "VeryLazy",
     dependencies = {
       "nvim-neotest/nvim-nio",
