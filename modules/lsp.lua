@@ -124,7 +124,7 @@ return {
       })
     end,
     opts = {
-      -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
+      -- 'default' for mappings similar to built-in completions (C-y to accept)
       -- 'super-tab' for mappings similar to vscode (tab to accept)
       -- 'enter' for enter to accept
       -- 'none' for no mappings
@@ -136,7 +136,7 @@ return {
       -- C-k: Toggle signature help (if signature.enabled = true)
       --
       -- See :h blink-cmp-config-keymap for defining your own keymap
-      keymap = { preset = 'default' },
+      keymap = { preset = 'super-tab' },
 
       completion = {
         documentation = {
