@@ -39,8 +39,12 @@ curl -fsSL kickstart.chardoncs.dev | python3
 
 - `minimal`: Only basic configurations and lazy.nvim. Good for users who just want a foundation for their customizations.
 - `lite`: `minimal` + basic plugins (Telescope, Tree-sitter configs, themes, etc.). Near-lightweight experience.
-- `default`: `lite` + basic LSP config, Lualine, and Nerd Fonts. My go-to choices. Suitable for most tasks without getting too bloated.
+- `default`: `lite` + basic LSP config, Lualine, and Nerd Fonts. The [omakase](https://en.wikipedia.org/wiki/Omakase) choice. Suitable for most tasks without getting too bloated.
 - `full`: `default` + multiple plugins to make Neovim look like an IDE. Good for new users coming from VS Code or IDEA as a transition.
+
+> [!NOTE]
+>
+> The `default` variant might change over time based on my opinion changes :)
 
 ### Optional Modules
 
