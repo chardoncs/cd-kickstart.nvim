@@ -118,7 +118,15 @@ return {
       "hrsh7th/cmp-calc",
       "hrsh7th/cmp-emoji",
       "f3fora/cmp-spell",
-      "L3MON4D3/LuaSnip",
+      {
+        "L3MON4D3/LuaSnip",
+        dependencies = {
+          "rafamadriz/friendly-snippets",
+        },
+        config = function ()
+          require("luasnip.loaders.from_vscode").lazy_load()
+        end,
+      },
     },
     config = function ()
       local cmp = require('cmp')
