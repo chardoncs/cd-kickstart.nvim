@@ -89,7 +89,7 @@ vim.opt.scrolloff = 8
 vim.opt.showmode = true
 
 -- Column limit
-vim.opt.colorcolumn = "120"
+vim.opt.colorcolumn = "100"
 
 vim.api.nvim_create_autocmd("TermOpen", {
   group = vim.api.nvim_create_augroup("term-init", {}),
