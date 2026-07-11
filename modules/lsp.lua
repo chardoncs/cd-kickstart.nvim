@@ -3,8 +3,6 @@
 local enable_cmp = true
 
 local function register_lsp(default_config)
-  --local root_pattern = require('lspconfig').util.root_pattern
-
   local function concat_table(first, second)
     local output = {}
 
