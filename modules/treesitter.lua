@@ -76,16 +76,16 @@ return {
 
       -- Indentation (experimental)
       --vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-    end,
 
-    -- Filetype override
-    vim.filetype.add({
-      extension = {
-        tsx = "tsx",
-        jsx = "jsx",
-        cs = "c_sharp",
-      },
-    })
+      -- Filetype override
+      vim.filetype.add({
+        extension = {
+          tsx = "tsx",
+          jsx = "jsx",
+          cs = "c_sharp",
+        },
+      })
+    end,
   },
   -- Display current scope at the top
   {
