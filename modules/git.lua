@@ -18,10 +18,7 @@ return {
       -- Workaround for Neogit bug
       --
       -- See https://github.com/NeogitOrg/neogit/issues/1696
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "NeogitCommitComplete",
-        callback = function() vim.cmd.tabprevious() end
-      })
+      vim.go.tabclose = 'left'
     end,
   },
   {
