@@ -52,6 +52,7 @@ return {
             "javascript",
             "json",
             "jsonc",
+            "kdl",
             "lua",
             "ocaml",
             "r",
